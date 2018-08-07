@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
-import com.example.kemalmaulana.isolution.Data.PojoNilai
+import com.example.kemalmaulana.isolution.Helper.PojoNilai
 import com.example.kemalmaulana.isolution.R
 
 class NilaiAdapter(context: Context, nilai: List<PojoNilai>): BaseAdapter() {

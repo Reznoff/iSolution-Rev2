@@ -8,10 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ListView
 import com.example.kemalmaulana.isolution.Adapter.NilaiAdapter
-import com.example.kemalmaulana.isolution.Data.DummyData
+import com.example.kemalmaulana.isolution.Helper.DummyData
 
 import com.example.kemalmaulana.isolution.R
-import kotlinx.android.synthetic.main.fragment_nilai.*
 
 
 class NilaiFragment : Fragment() {
