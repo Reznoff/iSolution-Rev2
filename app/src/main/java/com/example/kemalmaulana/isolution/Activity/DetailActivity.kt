@@ -18,25 +18,46 @@ class DetailActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
+        supportActionBar?.setHomeButtonEnabled(true)
 
         val manager: FragmentManager = supportFragmentManager
-        var fragment: Fragment? = manager.findFragmentById(R.id.container)
-
         val section = intent.extras.getString("section")
-//        Log.d(TAG, "section: "+section)
 
         when(section) {
-            "kehadiran" -> manager.beginTransaction().add(R.id.container, KehadiranFragment()).commit()
-            "nilai" -> manager.beginTransaction().add(R.id.container, NilaiFragment()).commit()
-            "jadwal" -> manager.beginTransaction().add(R.id.container, JadwalFragment()).commit()
-            "pembayaran" -> manager.beginTransaction().add(R.id.container, PembayaranFragment()).commit()
-            "reward" -> manager.beginTransaction().add(R.id.container, RewardFragment()).commit()
-            "report" -> manager.beginTransaction().add(R.id.container, ReportFragment()).commit()
+            "kehadiran" -> {
+                manager.beginTransaction().replace(R.id.container, KehadiranFragment()).commit()
+                supportActionBar?.setTitle(getString(R.string.kehadiran))
+                supportActionBar?.setSubtitle(getString(R.string.subtitle_kehadiran))
+            }
+            "nilai" -> {
+                manager.beginTransaction().replace(R.id.container, NilaiFragment()).commit()
+                supportActionBar?.setTitle(getString(R.string.nilai))
+                supportActionBar?.setSubtitle(getString(R.string.subtitle_nilai))
+            }
+            "jadwal" -> {
+                manager.beginTransaction().replace(R.id.container, JadwalFragment()).commit()
+                supportActionBar?.setTitle(getString(R.string.jadwal))
+                supportActionBar?.setSubtitle(getString(R.string.subtitle_jadwal))
+            }
+            "pembayaran" -> {
+                manager.beginTransaction().replace(R.id.container, PembayaranFragment()).commit()
+                supportActionBar?.setTitle(getString(R.string.pembayaran))
+                supportActionBar?.setSubtitle(getString(R.string.subtitle_pembayaran))
+            }
+            "reward" -> {
+                manager.beginTransaction().replace(R.id.container, RewardFragment()).commit()
+                supportActionBar?.setTitle(getString(R.string.reward))
+                supportActionBar?.setSubtitle(getString(R.string.subtitle_reward))
+            }
+            "report" -> {
+                manager.beginTransaction().replace(R.id.container, ReportFragment()).commit()
+                supportActionBar?.setTitle(getString(R.string.report))
+                supportActionBar?.setSubtitle(getString(R.string.subtitle_report))
+            }
         }
     }
 
-
-
-
-
+    override fun onBackPressed() {
+        this.finish()
+    }
 }

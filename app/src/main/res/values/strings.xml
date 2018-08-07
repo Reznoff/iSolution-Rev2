@@ -9,4 +9,13 @@
     <string name="pembayaran">Pembayaran</string>
     <string name="report">Report</string>
     <string name="reward">Reward</string>
+    <string name="ekskul">Ekskul</string>
+    <string name="pelajaran">Pelajaran</string>
+
+    <string name="subtitle_kehadiran">Kehadiran Akademik</string>
+    <string name="subtitle_nilai">Nilai Akademik</string>
+    <string name="subtitle_pembayaran">Status Pembayaran</string>
+    <string name="subtitle_report">Laporan Akademik</string>
+    <string name="subtitle_jadwal">Jadwal Akademik</string>
+    <string name="subtitle_reward">Prestasi Akademik</string>
 </resources>

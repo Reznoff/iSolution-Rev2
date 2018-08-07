@@ -11,6 +11,7 @@ import com.example.kemalmaulana.isolution.R
 
 class JadwalFragment : Fragment() {
 
+
     companion object {
         fun newInstance(): JadwalFragment {
             return JadwalFragment()
