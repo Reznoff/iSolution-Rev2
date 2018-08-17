@@ -5,10 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
-import com.example.kemalmaulana.isolution.Helper.PojoJadwalPelajaran
+import com.example.kemalmaulana.isolution.Helper.DummyData
 import com.example.kemalmaulana.isolution.R
 
-class PelajaranAdapter(context: Context, pel: List<PojoJadwalPelajaran>): BaseAdapter() {
+class PelajaranAdapter(context: Context, pel: List<DummyData.Pelajaran>): BaseAdapter() {
 
     val context = context
     val pel = pel

@@ -9,7 +9,7 @@ import android.view.ViewGroup
 
 import com.example.kemalmaulana.isolution.R
 
-class RewardFragment : Fragment() {
+class RewardFragment: Fragment() {
 
     companion object {
         fun newInstance(): RewardFragment {
@@ -19,8 +19,9 @@ class RewardFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        val rootView: View = inflater.inflate(R.layout.fragment_reward, container, false)
-        return rootView
+        val view: View = inflater.inflate(R.layout.fragment_reward, container, false)
+
+        return view
     }
 
 

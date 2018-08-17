@@ -3,7 +3,6 @@ package com.example.kemalmaulana.isolution.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.NavigationView
-import android.support.design.widget.Snackbar
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.view.Menu
@@ -19,11 +18,6 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
-
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
-        }
 
         val toggle = ActionBarDrawerToggle(
                 this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
@@ -41,9 +35,9 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         startActivity(kehadiran)
     }
 
-    fun nilaiClicked(view: View) {
+    fun reportClicked(view: View) {
         val kehadiran = Intent(this, DetailActivity::class.java)
-        kehadiran.putExtra("section", "nilai")
+        kehadiran.putExtra("section", "report")
         startActivity(kehadiran)
     }
 
@@ -65,11 +59,6 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         startActivity(kehadiran)
     }
 
-    fun reportClicked(view: View) {
-        val kehadiran = Intent(this, DetailActivity::class.java)
-        kehadiran.putExtra("section", "report")
-        startActivity(kehadiran)
-    }
 
     override fun onBackPressed() {
         if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
@@ -81,7 +70,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.test, menu)
+        menuInflater.inflate(R.menu.main, menu)
         return true
     }
 

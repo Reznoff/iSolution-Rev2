@@ -6,10 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
-import com.example.kemalmaulana.isolution.Helper.PojoNilai
+import com.example.kemalmaulana.isolution.Helper.DummyData
 import com.example.kemalmaulana.isolution.R
 
-class NilaiAdapter(context: Context, nilai: List<PojoNilai>): BaseAdapter() {
+class KeterampilanAdapter(context: Context, nilai: List<DummyData.Nilai>): BaseAdapter() {
 
     val context = context
     val nilai = nilai
