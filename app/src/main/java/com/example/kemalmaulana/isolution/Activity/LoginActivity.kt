@@ -40,9 +40,5 @@ class LoginActivity : AppCompatActivity() {
 
     }
 
-    private fun doDummyLogin(username: String, password: String) {
-
-    }
-
 
 }

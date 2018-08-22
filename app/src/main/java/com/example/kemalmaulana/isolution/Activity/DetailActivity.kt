@@ -2,6 +2,7 @@ package com.example.kemalmaulana.isolution.Activity
 
 import android.os.Bundle
 import android.support.v4.app.FragmentManager
+import android.view.WindowManager
 import com.example.kemalmaulana.isolution.Fragment.*
 import com.example.kemalmaulana.isolution.R
 
@@ -18,6 +19,7 @@ class DetailActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
         supportActionBar?.setHomeButtonEnabled(true)
+        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE)
 
         val manager: FragmentManager = supportFragmentManager
         val section = intent.extras.getString("section")

@@ -1,5 +1,6 @@
 package com.example.kemalmaulana.isolution.Adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -14,22 +15,27 @@ class KeterampilanAdapter(context: Context, nilai: List<DummyData.Nilai>): BaseA
     val context = context
     val nilai = nilai
 
+    @SuppressLint("ViewHolder")
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         val nilaiView: View
-        nilaiView = LayoutInflater.from(context).inflate(R.layout.adapter_nilai, null)
-        val tvKode: TextView = nilaiView.findViewById(R.id.tvKode)
+        nilaiView = LayoutInflater.from(context).inflate(R.layout.adapter_report_keterampilan, null)
+//        val tvKode: TextView = nilaiView.findViewById(R.id.tvKode)
         val tvNama: TextView = nilaiView.findViewById(R.id.tvNama)
         val tvTahun: TextView = nilaiView.findViewById(R.id.tvTahun)
+        val tvKkm: TextView = nilaiView.findViewById(R.id.tvKkm)
         val tvNilai: TextView = nilaiView.findViewById(R.id.tvNilai)
+        val tvPredikat: TextView = nilaiView.findViewById(R.id.tvPredikat)
 
         val nilaiValues = nilai[position]
 
 //        val resourceId = context.resources.getIdentifier()
 
-        tvKode.text = nilaiValues.kode
+//        tvKode.text = nilaiValues.kode
         tvNama.text = nilaiValues.nama
         tvTahun.text = nilaiValues.tahunAjaran
+        tvKkm.text = nilaiValues.kkm.toString()
         tvNilai.text = nilaiValues.nilai.toString()
+        tvPredikat.text = nilaiValues.predikat.toString()
         return nilaiView
     }
 
