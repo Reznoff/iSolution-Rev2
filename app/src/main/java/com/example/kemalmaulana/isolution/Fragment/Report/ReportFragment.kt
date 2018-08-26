@@ -1,4 +1,4 @@
-package com.example.kemalmaulana.isolution.Fragment
+package com.example.kemalmaulana.isolution.Fragment.Report
 
 
 import android.os.Bundle
@@ -13,15 +13,14 @@ import android.view.ViewGroup
 import android.widget.*
 import android.widget.AdapterView.OnItemSelectedListener
 import com.example.kemalmaulana.isolution.Adapter.KeterampilanAdapter
-import com.example.kemalmaulana.isolution.Helper.DummyData
 
 import com.example.kemalmaulana.isolution.R
 
 
 class ReportFragment : Fragment(), OnItemSelectedListener {
 
-    lateinit var adapterList: KeterampilanAdapter
-    lateinit var adapterSpinner: ArrayAdapter<String>
+//    lateinit var adapterList: KeterampilanAdapter
+//    lateinit var adapterSpinner: ArrayAdapter<String>
     lateinit var viewPager: ViewPager
     lateinit var pagerAdapter: SectionPagerAdapter
 

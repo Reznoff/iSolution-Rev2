@@ -46,4 +46,12 @@
     <string name="riwayat_terakhir">Riwayat Terakhir</string>
     <string name="hadir">Hadir</string>
     <string name="status">Status</string>
+    <string name="keamanan">Keamanan</string>
+    <string name="kebersihan">Kebersihan</string>
+    <string name="praktikum">Praktikum</string>
+    <string name="laundry">Laundry</string>
+    <string name="perbulan">Perbulan</string>
+    <string name="persemester">Persemester</string>
+    <string name="tunggal">Tunggal</string>
+    <string name="total_tunggakan">Total Tunggakan :</string>
 </resources>

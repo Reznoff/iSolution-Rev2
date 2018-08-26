@@ -1,4 +1,4 @@
-package com.example.kemalmaulana.isolution.Fragment
+package com.example.kemalmaulana.isolution.Fragment.Report
 
 import android.os.Bundle
 import android.support.v4.app.Fragment

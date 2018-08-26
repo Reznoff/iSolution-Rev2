@@ -1,4 +1,4 @@
-package com.example.kemalmaulana.isolution.Fragment
+package com.example.kemalmaulana.isolution.Fragment.Pembayaran
 
 
 import android.os.Bundle
@@ -9,18 +9,11 @@ import android.view.ViewGroup
 
 import com.example.kemalmaulana.isolution.R
 
-
-class PembayaranFragment : Fragment() {
-
-    companion object {
-        fun newInstance(): PembayaranFragment {
-            return PembayaranFragment()
-        }
-    }
+class PembayaranSemesterFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        val rootView: View = inflater.inflate(R.layout.fragment_pembayaran, container, false)
+        val rootView: View = inflater.inflate(R.layout.fragment_pembayaran_semester, container, false)
         return rootView
     }
 
