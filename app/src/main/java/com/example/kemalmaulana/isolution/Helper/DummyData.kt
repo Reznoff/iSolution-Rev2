@@ -35,10 +35,16 @@ object DummyData {
             TagihanBulanan("Oktober", false, false, false, false, "1 November")
     )
 
+    val paymentSemester = listOf(
+            TagihanSemesteran("Ganjil", false, false, false, "1 Juni 2018"),
+            TagihanSemesteran("Genal", true, true, true, "1 Januari 2019")
+    )
+
     class Nilai(val kode: String, val nama: String, val tahunAjaran: String, val kkm: Int, val predikat: Char, val nilai: Int)
     class SikapSpiritual(val predikat: Char, val keterangan: String)
     class SikapSosial(val predikat: Char, val keterangan: String)
     class Kehadiran(val nama: String, val kelas: String, val waktu: String, val status: String)
     class TagihanBulanan(val bulan: String, val keamanan: Boolean, val kebersihan: Boolean, val laundry: Boolean, val praktikum: Boolean, val deadline: String)
+    class TagihanSemesteran(val semester: String, val adminPerpus: Boolean, val biayaUas: Boolean, val pembangunan: Boolean, val deadline: String)
     class Pelajaran(val hari: String, val nama_pelajaran: String, val pengajar: String, val kurikulum: String, val kelas: String, val jam_masuk: String, val jam_keluar: String, val tahun_pelajaran: String)
 }
