@@ -26,7 +26,7 @@ object DummyData {
     val jadwalEkskul = listOf(
             JadwalEkskul("Senin", "Kerohanian", "Yusuf Syariffudin S.Ag"),
             JadwalEkskul("Rabu", "Bulu Tangkis", "Elis Sumiyati S.Si"),
-            JadwalEkskul("Jumat", "Game", "Maman Fatman S.T")
+            JadwalEkskul("Jumat", "E-Sport", "Maman Fatman S.T")
     )
 
     val daftarKehadiran = listOf(

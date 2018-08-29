@@ -32,7 +32,7 @@ class LoginActivity : AppCompatActivity() {
                 i.putExtra(getString(R.string.nis), username)
                 startActivity(i)
             } else {
-                Log.d("-u -p", "$username $password")
+//                Log.d("-u -p", "$username $password")
                 Toast.makeText(this, "Can't Sign-in", Toast.LENGTH_SHORT).show()
             }
         }

@@ -62,4 +62,13 @@ quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
 consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
 cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
+    <string name="account">Account</string>
+    <string name="about">About</string>
+    <string name="setting">Setting</string>
+    <string name="logout">Logout</string>
+    <string name="pembangunan">Pembangunan</string>
+    <string name="biaya_uas">Biaya UAS</string>
+    <string name="administrasi_perpustakaan">Administrasi Perpustakaan</string>
+
+    <string name="logout_alert">Apakah anda akan logout ?</string>
 </resources>

@@ -5,6 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="5dp"
+    android:layout_marginRight="2dp"
+    android:layout_marginLeft="2dp"
     app:cardCornerRadius="@dimen/appbar_padding_top"
     app:cardElevation="3dp">
 
@@ -19,7 +21,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="Tunggal"
+            android:text="@string/tunggal"
             android:textAlignment="center"
             android:textAllCaps="true"
             android:textSize="18sp"
