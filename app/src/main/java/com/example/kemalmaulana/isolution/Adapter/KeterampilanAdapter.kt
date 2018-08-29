@@ -1,7 +1,11 @@
 package com.example.kemalmaulana.isolution.Adapter
 
 import android.annotation.SuppressLint
+import android.annotation.TargetApi
+import android.app.AlertDialog
 import android.content.Context
+import android.os.Build
+import android.support.v7.widget.CardView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,10 +14,9 @@ import android.widget.TextView
 import com.example.kemalmaulana.isolution.Helper.DummyData
 import com.example.kemalmaulana.isolution.R
 
-class KeterampilanAdapter(context: Context, nilai: List<DummyData.Nilai>): BaseAdapter() {
+class KeterampilanAdapter(val context: Context, val nilai: List<DummyData.Nilai>): BaseAdapter() {
 
-    val context = context
-    val nilai = nilai
+    lateinit var builder: AlertDialog.Builder
 
     @SuppressLint("ViewHolder")
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
@@ -25,8 +28,8 @@ class KeterampilanAdapter(context: Context, nilai: List<DummyData.Nilai>): BaseA
         val tvKkm: TextView = nilaiView.findViewById(R.id.tvKkm)
         val tvNilai: TextView = nilaiView.findViewById(R.id.tvNilai)
         val tvPredikat: TextView = nilaiView.findViewById(R.id.tvPredikat)
-
-        val nilaiValues = nilai[position]
+        val cardKeterampilan: CardView = nilaiView.findViewById(R.id.cardKeterampilan)
+        val nilaiValues: DummyData.Nilai = nilai[position]
 
 //        val resourceId = context.resources.getIdentifier()
 
@@ -36,6 +39,10 @@ class KeterampilanAdapter(context: Context, nilai: List<DummyData.Nilai>): BaseA
         tvKkm.text = nilaiValues.kkm.toString()
         tvNilai.text = nilaiValues.nilai.toString()
         tvPredikat.text = nilaiValues.predikat.toString()
+        cardKeterampilan.setOnClickListener { _ ->
+            dialog(context)
+        }
+
         return nilaiView
     }
 
@@ -49,6 +56,19 @@ class KeterampilanAdapter(context: Context, nilai: List<DummyData.Nilai>): BaseA
 
     override fun getCount(): Int {
         return nilai.count()
+    }
+
+    @TargetApi(Build.VERSION_CODES.M)
+    fun dialog(context: Context) {
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            builder = AlertDialog.Builder(context, android.R.style.Theme_Material_Light_Dialog_Alert)
+        } else {
+            builder = AlertDialog.Builder(context)
+        }
+        builder
+                .setTitle(R.string.keterangan)
+                .setMessage(R.string.lorem)
+                .show()
     }
 
 }

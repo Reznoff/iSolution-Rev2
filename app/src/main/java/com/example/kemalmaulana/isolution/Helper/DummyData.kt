@@ -17,10 +17,16 @@ object DummyData {
     )
 
     val jadwalPelajaran = listOf(
-            Pelajaran("Senin", "Agama", "Yusuf Syariffudin S.Ag", "2016", "B", "8.30", "10.00", "2018"),
-            Pelajaran("Senin", "Matematika", "Maman Fatman S.T", "2016", "B", "10.00", "12.00", "2018"),
-            Pelajaran("Senin", "IPS", "Drs. Yoyom Maemunah", "2016", "B", "13.00", "14.40", "2018"),
-            Pelajaran("Senin", "IPA", "Elis Sumiyati S.Si", "2016", "B", "14.40", "16.00", "2018")
+            JadwalPelajaran("Senin", "Agama", "Yusuf Syariffudin S.Ag","IX B", "8.30", "10.00", "Ganjil 2018"),
+            JadwalPelajaran("Senin", "Matematika", "Maman Fatman S.T","IX B", "10.00", "12.00", "Ganjil 2018"),
+            JadwalPelajaran("Senin", "IPS", "Drs. Yoyom Maemunah","IX B", "13.00", "14.40", "Ganjil 2018"),
+            JadwalPelajaran("Senin", "IPA", "Elis Sumiyati S.Si", "IX B", "14.40", "16.00", "Ganjil 2018")
+    )
+
+    val jadwalEkskul = listOf(
+            JadwalEkskul("Senin", "Kerohanian", "Yusuf Syariffudin S.Ag"),
+            JadwalEkskul("Rabu", "Bulu Tangkis", "Elis Sumiyati S.Si"),
+            JadwalEkskul("Jumat", "Game", "Maman Fatman S.T")
     )
 
     val daftarKehadiran = listOf(
@@ -43,8 +49,9 @@ object DummyData {
     val paymentSingle = listOf(
             TagihanTunggal("Uang Pangkal", "satu kali", "1 Juli 2018", false),
             TagihanTunggal("Biaya Tahunan", "per tahun", "1 Juli 2018", false)
-
     )
+
+
 
     class Nilai(val kode: String, val nama: String, val tahunAjaran: String, val kkm: Int, val predikat: Char, val nilai: Int)
     class SikapSpiritual(val predikat: Char, val keterangan: String)
@@ -53,5 +60,6 @@ object DummyData {
     class TagihanBulanan(val bulan: String, val keamanan: Boolean, val kebersihan: Boolean, val laundry: Boolean, val praktikum: Boolean, val deadline: String)
     class TagihanSemesteran(val semester: String, val adminPerpus: Boolean, val biayaUas: Boolean, val pembangunan: Boolean, val deadline: String)
     class TagihanTunggal(val komponen: String, val periode: String, val deadline: String, val status: Boolean)
-    class Pelajaran(val hari: String, val nama_pelajaran: String, val pengajar: String, val kurikulum: String, val kelas: String, val jam_masuk: String, val jam_keluar: String, val tahun_pelajaran: String)
+    class JadwalPelajaran(val hari: String, val nama_pelajaran: String, val pengajar: String, val kelas: String, val jam_masuk: String, val jam_keluar: String, val tahun_pelajaran: String)
+    class JadwalEkskul(val hari: String, val nama_ekskul: String, val pembimbing: String)
 }

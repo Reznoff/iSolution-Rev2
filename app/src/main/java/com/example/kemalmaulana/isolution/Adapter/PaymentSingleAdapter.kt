@@ -34,9 +34,8 @@ class PaymentSingleAdapter(val context: Context, val payment: List<DummyData.Tag
 
         @SuppressLint("SetTextI18n")
         fun bindPayment(payment: DummyData.TagihanTunggal, context: Context) {
-            val periode: String = payment.periode
             textKomponen.text = payment.komponen
-            textPeriode.text = "Periode Pembayaran $periode"
+            textPeriode.text = "Periode Pembayaran ${payment.periode}"
             textStat.text = boolToEmoticon(payment.status)
             textDate.text = payment.deadline
         }

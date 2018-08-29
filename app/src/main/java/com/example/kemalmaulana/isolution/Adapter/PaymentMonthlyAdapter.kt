@@ -1,6 +1,7 @@
 package com.example.kemalmaulana.isolution.Adapter
 
 import android.content.Context
+import android.content.res.ColorStateList
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
@@ -35,10 +36,6 @@ class PaymentMonthlyAdapter(val context: Context, val payment: List<DummyData.Ta
         val textDate: TextView = itemView.findViewById(R.id.textDate)
 
         fun bindPayment(payment: DummyData.TagihanBulanan, context: Context) {
-//            Log.d("getBoolean", boolToEmoticon(payment.laundry))
-//            Log.d("getBoolean", payment.laundry.toString())
-//            Log.d("getText", payment.bulan)
-
             textMonth.text = payment.bulan
             textKeamanan.text = boolToEmoticon(payment.keamanan)
             textKebersihan.text = boolToEmoticon(payment.kebersihan)

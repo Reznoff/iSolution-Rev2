@@ -1,6 +1,5 @@
 package com.example.kemalmaulana.isolution.Fragment.Report
 
-
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -23,7 +22,6 @@ class ReportKeterampilanFragment : Fragment(), AdapterView.OnItemSelectedListene
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val view: View = inflater.inflate(R.layout.fragment_report_keterampilan, container, false)
-
         val spinnerTahunAjaran: Spinner = view.findViewById(R.id.spinnerTahunAjaran)
         spinnerTahunAjaran.onItemSelectedListener = this
 
@@ -52,6 +50,4 @@ class ReportKeterampilanFragment : Fragment(), AdapterView.OnItemSelectedListene
         }
 //        Toast.makeText(parent.context, "Selected : "+item, Toast.LENGTH_SHORT).show()
     }
-
-
 }

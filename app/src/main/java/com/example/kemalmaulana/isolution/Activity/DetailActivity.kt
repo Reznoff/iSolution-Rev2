@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.support.v4.app.FragmentManager
 import android.view.WindowManager
 import com.example.kemalmaulana.isolution.Fragment.*
+import com.example.kemalmaulana.isolution.Fragment.Jadwal.JadwalFragment
 import com.example.kemalmaulana.isolution.Fragment.Pembayaran.PembayaranFragment
 import com.example.kemalmaulana.isolution.Fragment.Report.ReportFragment
 import com.example.kemalmaulana.isolution.R
