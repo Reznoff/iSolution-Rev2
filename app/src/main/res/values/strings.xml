@@ -71,4 +71,6 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string
     <string name="administrasi_perpustakaan">Administrasi Perpustakaan</string>
 
     <string name="logout_alert">Apakah anda akan logout ?</string>
+    <string name="sikap">Sikap</string>
+    <string name="keterampilan">Keterampilan</string>
 </resources>

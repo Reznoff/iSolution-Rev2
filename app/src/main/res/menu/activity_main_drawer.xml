@@ -6,11 +6,11 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_setting"
-            android:icon="@drawable/setting"
+            android:icon="@drawable/ic_settings"
             android:title="@string/setting" />
         <item
             android:id="@+id/nav_about"
-            android:icon="@drawable/about"
+            android:icon="@drawable/ic_about"
             android:title="@string/about" />
     </group>
 
@@ -18,7 +18,7 @@
         <menu>
             <item
                 android:id="@+id/nav_logout"
-                android:icon="@drawable/logout"
+                android:icon="@drawable/ic_logout"
                 android:title="@string/logout" />
         </menu>
     </item>

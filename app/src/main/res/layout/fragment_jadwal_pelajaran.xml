@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragment.Jadwal.JadwalPelajaranFragment">
+    tools:context=".view.jadwal.fragment.JadwalPelajaranFragment">
 
 
     <android.support.v7.widget.RecyclerView

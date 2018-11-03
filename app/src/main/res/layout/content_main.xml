@@ -88,7 +88,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/guideline"
-                app:layout_constraintTop_toBottomOf="@+id/textView8"
+                app:layout_constraintTop_toBottomOf="@+id/textReport"
                 app:srcCompat="@drawable/ic_pembayaran" />
 
             <TextView
@@ -103,34 +103,7 @@
                 app:layout_constraintStart_toStartOf="@+id/guideline" />
 
             <ImageView
-                android:id="@+id/imageReward"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:onClick="rewardClicked"
-                android:visibility="gone"
-                app:layout_constraintDimensionRatio="1:1"
-                app:layout_constraintEnd_toStartOf="@+id/guideline"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageJadwal"
-                app:srcCompat="@drawable/ic_reward" />
-
-            <TextView
-                android:id="@+id/textReward"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:text="Reward-Punishment"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="@+id/imageReward"
-                app:layout_constraintEnd_toStartOf="@+id/guideline"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <ImageView
-                android:id="@+id/imageView8"
+                android:id="@+id/imageReport"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginEnd="8dp"
@@ -144,13 +117,13 @@
                 app:srcCompat="@drawable/ic_report" />
 
             <TextView
-                android:id="@+id/textView8"
+                android:id="@+id/textReport"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
                 android:text="E-Report"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView8"
+                app:layout_constraintBottom_toBottomOf="@+id/imageReport"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/guideline" />
 
