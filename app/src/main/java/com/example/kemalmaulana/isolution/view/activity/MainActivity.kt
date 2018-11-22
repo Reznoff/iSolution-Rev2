@@ -19,11 +19,17 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.example.kemalmaulana.isolution.model.UserSession
 import com.example.kemalmaulana.isolution.R
+import com.example.kemalmaulana.isolution.model.content.Gambar
+import com.example.kemalmaulana.isolution.model.content.Profile
+import com.example.kemalmaulana.isolution.model.repository.ApiRepository
+import com.example.kemalmaulana.isolution.presenter.ProfilePresenter
+import com.example.kemalmaulana.isolution.view.profile.`interface`.ProfileView
+import com.google.gson.Gson
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 
-class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener {
+class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener, ProfileView {
 
     lateinit var builder: AlertDialog.Builder
     val nis: String by lazy {
@@ -43,15 +49,23 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
 
+        val presenter = ProfilePresenter(ApiRepository(), Gson(), this)
+        presenter.getProfileData(nis)
+
         nav_view.setNavigationItemSelectedListener(this)
 
-        val header: View = nav_view.getHeaderView(0)
-        val navImage: ImageView = header.findViewById(R.id.imgSiswa)
-        val navNis: TextView = header.findViewById(R.id.navNis)
-        val navNama:TextView = header.findViewById(R.id.navNama)
-
-        navNis.text = nis
-        navNama.text = getString(R.string.dummy_user)
+//        val header: View = nav_view.getHeaderView(0)
+//        val navImage: ImageView = header.findViewById(R.id.imgSiswa)
+//        val navNis: TextView = header.findViewById(R.id.navNis)
+//        val navNama:TextView = header.findViewById(R.id.navNama)
+//
+//        navNis.text = nis
+//        navNama.text = getString(R.string.dummy_user)
+//        navImage.setOnClickListener {
+//            val intent = Intent(this, ProfileActivity::class.java)
+//            startActivity(intent)
+//            finish()
+//        }
 //        Picasso.get().load()
     }
 
@@ -139,4 +153,27 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         }
     }
 
+    override fun showLoading() {
+
+    }
+
+    override fun hideLoading() {
+
+    }
+
+    override fun getData(profile: Profile, gambar: Gambar) {
+        val header: View = nav_view.getHeaderView(0)
+        val navImage: ImageView = header.findViewById(R.id.imgSiswa)
+        val navNis: TextView = header.findViewById(R.id.navNis)
+        val navNama:TextView = header.findViewById(R.id.navNama)
+
+        navNis.text = profile.nis
+        navNama.text = profile.namaLengkap
+        Picasso.get().load("https:${gambar.photo}").into(navImage)
+        Log.d("Image", gambar.photo.toString())
+        navImage.setOnClickListener {
+            val intent = Intent(this, ProfileActivity::class.java)
+            startActivity(intent)
+        }
+    }
 }

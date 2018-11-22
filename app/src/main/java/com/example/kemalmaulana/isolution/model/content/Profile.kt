@@ -79,6 +79,7 @@ data class Profile(
 
         @SerializedName("terakhir_ubah")
         val terakhirUbah: String? = null
+
 ) : Parcelable {
 
     constructor(parcel: Parcel) : this(

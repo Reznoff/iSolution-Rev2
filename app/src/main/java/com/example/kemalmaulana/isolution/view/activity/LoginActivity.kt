@@ -13,8 +13,8 @@ import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
 
-    private val authUser: String = "0996"
-    private val authPass: String = "0996"
+    private val authUser: String = "999001"
+    private val authPass: String = "999001"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
