@@ -74,4 +74,5 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string
     <string name="sikap">Sikap</string>
     <string name="keterampilan">Keterampilan</string>
     <string name="dummy_user">Dummy User</string>
+    <string name="favorite">Favorite</string>
 </resources>

@@ -15,15 +15,21 @@ import android.support.v7.app.AppCompatDelegate
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
+import android.widget.ImageView
 import android.widget.TextView
 import com.example.kemalmaulana.isolution.model.UserSession
 import com.example.kemalmaulana.isolution.R
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 
 class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     lateinit var builder: AlertDialog.Builder
+    val nis: String by lazy {
+        val session = getSharedPreferences(UserSession.PREF_NAME, Context.MODE_PRIVATE)
+        session.getString("NIS", null)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,14 +46,13 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         nav_view.setNavigationItemSelectedListener(this)
 
         val header: View = nav_view.getHeaderView(0)
+        val navImage: ImageView = header.findViewById(R.id.imgSiswa)
         val navNis: TextView = header.findViewById(R.id.navNis)
         val navNama:TextView = header.findViewById(R.id.navNama)
 
-        val session: SharedPreferences = getSharedPreferences(UserSession.PREF_NAME, Context.MODE_PRIVATE)
-        val nis: String? = session.getString("NIS", null)
-        Log.d("NIS", nis)
         navNis.text = nis
         navNama.text = getString(R.string.dummy_user)
+//        Picasso.get().load()
     }
 
     fun kehadiranClicked(view: View) {
