@@ -35,7 +35,8 @@
         <activity
             android:name=".view.activity.LoginActivity"
             android:label="@string/title_activity_login" />
-        <activity android:name=".view.activity.AboutActivity"></activity>
+        <activity android:name=".view.activity.AboutActivity" />
+        <activity android:name=".view.profile.ProfileActivity"></activity>
     </application>
 
 </manifest>

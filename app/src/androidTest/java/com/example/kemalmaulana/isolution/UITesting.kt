@@ -4,6 +4,7 @@ import android.content.Intent
 import android.support.test.espresso.Espresso.onView
 import android.support.test.espresso.Espresso.pressBack
 import android.support.test.espresso.action.ViewActions.click
+import android.support.test.espresso.action.ViewActions.typeText
 import android.support.test.espresso.assertion.ViewAssertions.matches
 import android.support.test.espresso.matcher.ViewMatchers.*
 import android.support.test.rule.ActivityTestRule
@@ -29,7 +30,13 @@ class UITesting {
     @Test
     fun instrumentationTest() {
         Thread.sleep(5000)
-        onView(withId(imageKehadiran)).check(matches(isDisplayed()))
+        onView(withId(nis)).check(matches(isDisplayed()))
+                .perform(typeText("0996"))
+        Thread.sleep(1000)
+        onView(withId(passwords)).check(matches(isDisplayed()))
+                .perform(typeText("0996"))
+        Thread.sleep(1000)
+        onView(withId(sign_in_button)).check(matches(isDisplayed()))
                 .perform(click())
         Thread.sleep(5000)
         pressBack()

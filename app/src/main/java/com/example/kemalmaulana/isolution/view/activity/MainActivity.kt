@@ -11,6 +11,7 @@ import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
+import android.support.v7.app.AppCompatDelegate
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
@@ -24,11 +25,12 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
     lateinit var builder: AlertDialog.Builder
 
-    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
+
+        vectorSetup()
 
         val toggle = ActionBarDrawerToggle(
                 this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
@@ -42,11 +44,10 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         val navNama:TextView = header.findViewById(R.id.navNama)
 
         val session: SharedPreferences = getSharedPreferences(UserSession.PREF_NAME, Context.MODE_PRIVATE)
-        @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
-        val nis: String = session.getString("NIS", null)
+        val nis: String? = session.getString("NIS", null)
         Log.d("NIS", nis)
         navNis.text = nis
-        navNama.text = "Dummy User"
+        navNama.text = getString(R.string.dummy_user)
     }
 
     fun kehadiranClicked(view: View) {
@@ -81,12 +82,6 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
             super.onBackPressed()
         }
     }
-
-//    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        menuInflater.inflate(R.menu.main, menu)
-//        return true
-//    }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         // Handle action bar item clicks here. The action bar will
@@ -132,4 +127,11 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                 .setNegativeButton("Tidak") { dialog, which -> }
                 .show()
     }
+
+    private fun vectorSetup() {
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
+        }
+    }
+
 }
