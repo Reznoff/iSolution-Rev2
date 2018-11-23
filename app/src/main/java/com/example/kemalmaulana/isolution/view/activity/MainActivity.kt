@@ -29,9 +29,9 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 
-class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener, ProfileView {
+class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener {
 
-    lateinit var builder: AlertDialog.Builder
+    private lateinit var builder: AlertDialog.Builder
     val nis: String by lazy {
         val session = getSharedPreferences(UserSession.PREF_NAME, Context.MODE_PRIVATE)
         session.getString("NIS", null)
@@ -49,24 +49,19 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
 
-        val presenter = ProfilePresenter(ApiRepository(), Gson(), this)
-        presenter.getProfileData(nis)
-
         nav_view.setNavigationItemSelectedListener(this)
 
-//        val header: View = nav_view.getHeaderView(0)
-//        val navImage: ImageView = header.findViewById(R.id.imgSiswa)
-//        val navNis: TextView = header.findViewById(R.id.navNis)
-//        val navNama:TextView = header.findViewById(R.id.navNama)
-//
-//        navNis.text = nis
-//        navNama.text = getString(R.string.dummy_user)
-//        navImage.setOnClickListener {
-//            val intent = Intent(this, ProfileActivity::class.java)
-//            startActivity(intent)
-//            finish()
-//        }
-//        Picasso.get().load()
+        val header: View = nav_view.getHeaderView(0)
+        val navImage: ImageView = header.findViewById(R.id.imgSiswa)
+        val navNis: TextView = header.findViewById(R.id.navNis)
+        val navNama:TextView = header.findViewById(R.id.navNama)
+
+        navNis.text = nis
+        navNama.visibility = View.GONE
+        navImage.setOnClickListener {
+            val intent = Intent(this, ProfileActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     fun kehadiranClicked(view: View) {
@@ -115,6 +110,9 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
         when (item.itemId) {
+            R.id.nav_pengumuman -> {
+                //TODO- DO SOMETHING
+            }
             R.id.nav_setting -> {
                 //TODO- DO SOMETHING
             }
@@ -153,27 +151,4 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         }
     }
 
-    override fun showLoading() {
-
-    }
-
-    override fun hideLoading() {
-
-    }
-
-    override fun getData(profile: Profile, gambar: Gambar) {
-        val header: View = nav_view.getHeaderView(0)
-        val navImage: ImageView = header.findViewById(R.id.imgSiswa)
-        val navNis: TextView = header.findViewById(R.id.navNis)
-        val navNama:TextView = header.findViewById(R.id.navNama)
-
-        navNis.text = profile.nis
-        navNama.text = profile.namaLengkap
-        Picasso.get().load("https:${gambar.photo}").into(navImage)
-        Log.d("Image", gambar.photo.toString())
-        navImage.setOnClickListener {
-            val intent = Intent(this, ProfileActivity::class.java)
-            startActivity(intent)
-        }
-    }
 }

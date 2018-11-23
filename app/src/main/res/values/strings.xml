@@ -77,4 +77,15 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string
     <string name="favorite">Favorite</string>
     <string name="pribadi">Pribadi</string>
     <string name="orang_tua">Orang Tua</string>
+    <string name="nis_">NIS :</string>
+    <string name="nisn">NISN :</string>
+    <string name="nama">Nama :</string>
+    <string name="tempat_tanggal_lahir">Tempat, Tanggal Lahir :</string>
+    <string name="jenis_kelamin">Jenis Kelamin :</string>
+    <string name="alamat">Alamat :</string>
+    <string name="agama">Agama :</string>
+    <string name="status_keluarga">Status Keluarga :</string>
+    <string name="nama_ayah">Nama Ayah :</string>
+    <string name="nama_ibu">Nama Ibu :</string>
+    <string name="kontak">Kontak :</string>
 </resources>

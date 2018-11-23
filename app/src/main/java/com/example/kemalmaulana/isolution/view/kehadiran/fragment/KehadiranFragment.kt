@@ -26,8 +26,13 @@ import com.github.mikephil.charting.data.PieEntry
 class KehadiranFragment : Fragment() {
 
     private lateinit var adapter: KehadiranAdapter
-    private lateinit var currentNis: String
+//    private lateinit var currentNis: String
     private lateinit var toolbar: Toolbar
+
+    private val currentNis by lazy {
+        val prefs: SharedPreferences = activity!!.getSharedPreferences(UserSession.PREF_NAME, Context.MODE_PRIVATE)
+        prefs.getString(getString(R.string.nis), null)
+    }
 
     companion object {
         fun newInstance(): KehadiranFragment {
@@ -39,8 +44,7 @@ class KehadiranFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val rootView: View = inflater.inflate(R.layout.fragment_kehadiran, container, false)
-        val prefs: SharedPreferences = rootView.context.getSharedPreferences(UserSession.PREF_NAME, Context.MODE_PRIVATE)
-        currentNis = prefs.getString(getString(R.string.nis), null)
+
 
         initToolbar(rootView)
         usePieChart(rootView)

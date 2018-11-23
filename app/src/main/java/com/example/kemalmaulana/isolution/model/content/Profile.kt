@@ -2,6 +2,7 @@ package com.example.kemalmaulana.isolution.model.content
 
 import android.os.Parcel
 import android.os.Parcelable
+import androidx.versionedparcelable.VersionedParcelize
 import com.google.gson.annotations.SerializedName
 
 data class Profile(
@@ -80,74 +81,4 @@ data class Profile(
         @SerializedName("terakhir_ubah")
         val terakhirUbah: String? = null
 
-) : Parcelable {
-
-    constructor(parcel: Parcel) : this(
-            parcel.readString(),
-            parcel.readString(),
-            parcel.readString(),
-            parcel.readString(),
-            parcel.readString(),
-            parcel.readString(),
-            parcel.readString(),
-            parcel.readString(),
-            parcel.readString(),
-            parcel.readString(),
-            parcel.readString(),
-            parcel.readString(),
-            parcel.readString(),
-            parcel.readString(),
-            parcel.readString(),
-            parcel.readString(),
-            parcel.readString(),
-            parcel.readString(),
-            parcel.readString(),
-            parcel.readString(),
-            parcel.readString(),
-            parcel.readString(),
-            parcel.readString(),
-            parcel.readString(),
-            parcel.readString())
-
-    override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeString(idPelajar)
-        parcel.writeString(idKelas)
-        parcel.writeString(nis)
-        parcel.writeString(nisn)
-        parcel.writeString(namaLengkap)
-        parcel.writeString(tempatLahir)
-        parcel.writeString(tanggalLahir)
-        parcel.writeString(jenisKelamin)
-        parcel.writeString(alamat)
-        parcel.writeString(namaAyah)
-        parcel.writeString(namaIbu)
-        parcel.writeString(kontak)
-        parcel.writeString(statusPelajar)
-        parcel.writeString(penjelasan)
-        parcel.writeString(idPaket)
-        parcel.writeString(idAsrama)
-        parcel.writeString(anakKe)
-        parcel.writeString(agama)
-        parcel.writeString(statusKeluarga)
-        parcel.writeString(telepon)
-        parcel.writeString(tglPenerimaanKelas)
-        parcel.writeString(sekolahAsal)
-        parcel.writeString(kelasDiterima)
-        parcel.writeString(tglDiterimaKelas)
-        parcel.writeString(terakhirUbah)
-    }
-
-    override fun describeContents(): Int {
-        return 0
-    }
-
-    companion object CREATOR : Parcelable.Creator<Profile> {
-        override fun createFromParcel(parcel: Parcel): Profile {
-            return Profile(parcel)
-        }
-
-        override fun newArray(size: Int): Array<Profile?> {
-            return arrayOfNulls(size)
-        }
-    }
-}
+)
