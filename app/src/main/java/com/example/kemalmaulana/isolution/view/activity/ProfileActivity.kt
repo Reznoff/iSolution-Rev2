@@ -17,6 +17,7 @@ import com.example.kemalmaulana.isolution.model.content.Gambar
 import com.example.kemalmaulana.isolution.model.content.Profile
 import com.example.kemalmaulana.isolution.model.repository.ApiRepository
 import com.example.kemalmaulana.isolution.presenter.ProfilePresenter
+import com.example.kemalmaulana.isolution.utils.CircleTransform
 import com.example.kemalmaulana.isolution.view.profile.`interface`.ProfileView
 import com.example.kemalmaulana.isolution.utils.genderParser
 import com.example.kemalmaulana.isolution.view.profile.fragment.ProfileOrangTuaFragment
@@ -70,7 +71,11 @@ class ProfileActivity : AppCompatActivity(), ProfileView {
     }
 
     override fun getData(profile: Profile, gambar: Gambar) {
-        Picasso.get().load("https:${gambar.photo}").into(imgProfile)
+        Picasso.get()
+                .load("https:${gambar.photo}")
+                .error(R.drawable.ic_logo_profile)
+                .transform(CircleTransform())
+                .into(imgProfile)
         txtNis.text = profile.nis
         txtNama.text = profile.namaLengkap
         txtAlamat.text = profile.alamat
