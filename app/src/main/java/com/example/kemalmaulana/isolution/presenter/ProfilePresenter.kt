@@ -7,7 +7,7 @@ import com.example.kemalmaulana.isolution.utils.CoroutineContextProvider
 import com.example.kemalmaulana.isolution.view.profile.`interface`.ProfileView
 import com.google.gson.Gson
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
 import org.jetbrains.anko.coroutines.experimental.bg
 
@@ -15,7 +15,7 @@ class ProfilePresenter(private val apiRepository: ApiRepository, private val gso
 
     fun getProfileData(nis: String) {
         view.showLoading()
-        CoroutineScope(contextPool.main).async {
+        GlobalScope.async(contextPool.main) {
             val profileData = bg {
                 gson.fromJson(apiRepository.doRequest(ApiLink.getProfileSiswa(nis)), ProfileResponse::class.java)
             }

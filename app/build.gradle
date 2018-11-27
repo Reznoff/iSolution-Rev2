@@ -14,7 +14,7 @@ android {
         versionName "1.0"
         vectorDrawables.useSupportLibrary = true
         buildConfigField "String", "BASE_URL", "\"https://demo.simak.id/\""
-        testInstrumentationRunner "android.support.main.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "android.support.default.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {

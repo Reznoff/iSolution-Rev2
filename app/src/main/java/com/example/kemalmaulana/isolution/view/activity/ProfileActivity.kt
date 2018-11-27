@@ -76,10 +76,10 @@ class ProfileActivity : AppCompatActivity(), ProfileView {
                 .error(R.drawable.ic_logo_profile)
                 .transform(CircleTransform())
                 .into(imgProfile)
-        txtNis.text = profile.nis
-        txtNama.text = profile.namaLengkap
-        txtAlamat.text = profile.alamat
-        txtJenisKelamin.text = genderParser(profile.jenisKelamin)
+//        txtNis.text = profile.nis
+//        txtNama.text = profile.namaLengkap
+//        txtAlamat.text = profile.alamat
+//        txtJenisKelamin.text = genderParser(profile.jenisKelamin)
 
         offsetToolbar(profile.namaLengkap)
     }

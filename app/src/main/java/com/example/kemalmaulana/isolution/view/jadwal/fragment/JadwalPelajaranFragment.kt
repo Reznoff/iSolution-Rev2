@@ -11,14 +11,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.kemalmaulana.isolution.view.jadwal.adapter.JadwalPelajaranAdapter
-import com.example.kemalmaulana.isolution.model.DummyData
 
 import com.example.kemalmaulana.isolution.R
 import com.example.kemalmaulana.isolution.model.UserSession
 import com.example.kemalmaulana.isolution.model.content.Jadwal
 import com.example.kemalmaulana.isolution.model.repository.ApiRepository
 import com.example.kemalmaulana.isolution.presenter.JadwalPresenter
-import com.example.kemalmaulana.isolution.view.profile.`interface`.JadwalView
+import com.example.kemalmaulana.isolution.view.jadwal.`interface`.JadwalView
 import com.google.gson.Gson
 
 class JadwalPelajaranFragment : Fragment(), JadwalView {

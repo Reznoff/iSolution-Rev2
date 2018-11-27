@@ -12,11 +12,47 @@
         android:layout_marginTop="8dp"
         android:orientation="vertical">
 
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/loadingLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ProgressBar
+                android:id="@+id/progressBar2"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView36"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/loading"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/progressBar2" />
+        </android.support.constraint.ConstraintLayout>
+
         <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/rootLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:visibility="gone">
 
             <android.support.constraint.Guideline
                 android:id="@+id/guideline"
@@ -33,20 +69,20 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
+                android:contentDescription="@string/kehadiran"
                 android:onClick="kehadiranClicked"
                 app:layout_constraintDimensionRatio="1:1.2"
                 app:layout_constraintEnd_toStartOf="@+id/guideline"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_logo_kehadiran"
-                android:contentDescription="@string/kehadiran" />
+                app:srcCompat="@drawable/ic_logo_kehadiran" />
 
             <TextView
                 android:id="@+id/textKehadiran"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
                 android:text="@string/kehadiran"
                 app:layout_constraintBottom_toBottomOf="@+id/imageKehadiran"
                 app:layout_constraintEnd_toStartOf="@+id/guideline"
@@ -59,15 +95,13 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
+                android:contentDescription="@string/jadwal"
                 android:onClick="jadwalClicked"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintDimensionRatio="1:1.2"
-                app:layout_constraintEnd_toStartOf="@+id/guideline"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageKehadiran"
-                app:srcCompat="@drawable/ic_logo_jadwal_pelajaran"
-                android:contentDescription="@string/jadwal" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guideline"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_logo_jadwal_pelajaran" />
 
             <TextView
                 android:id="@+id/textJadwal"
@@ -77,8 +111,8 @@
                 android:layout_marginEnd="8dp"
                 android:text="@string/jadwal"
                 app:layout_constraintBottom_toBottomOf="@+id/imageJadwal"
-                app:layout_constraintEnd_toStartOf="@+id/guideline"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guideline" />
 
             <ImageView
                 android:id="@+id/imagePembayaran"
@@ -88,22 +122,22 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="8dp"
+                android:contentDescription="@string/pembayaran"
                 android:onClick="pembayaranClicked"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintDimensionRatio="1:1.2"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/guideline"
-                app:layout_constraintTop_toBottomOf="@+id/textReport"
-                app:srcCompat="@drawable/ic_logo_pembayaran"
-                android:contentDescription="@string/pembayaran" />
+                app:layout_constraintTop_toBottomOf="@+id/textJadwal"
+                app:srcCompat="@drawable/ic_logo_pembayaran_soon" />
 
             <TextView
                 android:id="@+id/textPembayaran"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
                 android:text="@string/pembayaran"
                 app:layout_constraintBottom_toBottomOf="@+id/imagePembayaran"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -116,24 +150,24 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
+                android:contentDescription="@string/report"
                 android:onClick="reportClicked"
                 app:layout_constraintDimensionRatio="1:1.2"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/guideline"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_logo_rapor"
-                android:contentDescription="@string/report" />
+                app:layout_constraintEnd_toStartOf="@+id/guideline"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textKehadiran"
+                app:srcCompat="@drawable/ic_logo_rapor_soon" />
 
             <TextView
                 android:id="@+id/textReport"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
                 android:text="@string/report"
                 app:layout_constraintBottom_toBottomOf="@+id/imageReport"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/guideline" />
+                app:layout_constraintEnd_toStartOf="@+id/guideline"
+                app:layout_constraintStart_toStartOf="parent" />
 
         </android.support.constraint.ConstraintLayout>
 

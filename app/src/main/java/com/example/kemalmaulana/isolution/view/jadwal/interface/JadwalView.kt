@@ -1,4 +1,4 @@
-package com.example.kemalmaulana.isolution.view.profile.`interface`
+package com.example.kemalmaulana.isolution.view.jadwal.`interface`
 
 import com.example.kemalmaulana.isolution.model.content.Jadwal
 

@@ -1,37 +1,40 @@
 package com.example.kemalmaulana.isolution.view.activity
 
-import android.annotation.SuppressLint
 import android.annotation.TargetApi
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
+import android.support.constraint.ConstraintLayout
 import android.support.design.widget.NavigationView
+import android.support.design.widget.Snackbar
+import android.support.v4.content.ContextCompat
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatDelegate
-import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import com.example.kemalmaulana.isolution.model.UserSession
 import com.example.kemalmaulana.isolution.R
-import com.example.kemalmaulana.isolution.model.content.Gambar
-import com.example.kemalmaulana.isolution.model.content.Profile
+import com.example.kemalmaulana.isolution.model.content.Kehadiran
 import com.example.kemalmaulana.isolution.model.repository.ApiRepository
-import com.example.kemalmaulana.isolution.presenter.ProfilePresenter
-import com.example.kemalmaulana.isolution.view.profile.`interface`.ProfileView
+import com.example.kemalmaulana.isolution.presenter.KehadiranPresenter
+import com.example.kemalmaulana.isolution.utils.kehadiranParser
+import com.example.kemalmaulana.isolution.view.kehadiran.`interface`.KehadiranView
 import com.google.gson.Gson
-import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 
-class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener {
+class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener, KehadiranView {
 
     private lateinit var builder: AlertDialog.Builder
+    private lateinit var presenter: KehadiranPresenter
+    private lateinit var rootLayout: ConstraintLayout
+    private lateinit var loadingLayout: ConstraintLayout
     val nis: String by lazy {
         val session = getSharedPreferences(UserSession.PREF_NAME, Context.MODE_PRIVATE)
         session.getString("NIS", null)
@@ -43,6 +46,9 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         setSupportActionBar(toolbar)
 
         vectorSetup()
+
+        rootLayout = findViewById(R.id.rootLayout)
+        loadingLayout = findViewById(R.id.loadingLayout)
 
         val toggle = ActionBarDrawerToggle(
                 this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
@@ -62,6 +68,13 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
             val intent = Intent(this, ProfileActivity::class.java)
             startActivity(intent)
         }
+
+        presenter = KehadiranPresenter(ApiRepository(), Gson(), this)
+        presenter.getStatusKehadiran(nis)
+//        val snackbar = Snackbar.make(findViewById(R.id.drawer_layout), "Anak anda dinyatakan mabal", Snackbar.LENGTH_INDEFINITE)
+//        snackbar.view.setBackgroundColor(ContextCompat.getColor(this, android.R.color.holo_green_dark))
+//        snackbar.show()
+//        Snackbar.make(findViewById(R.id.rootLayout), "Anak anda dinyatakan mabal", Snackbar.LENGTH_INDEFINITE).show()
     }
 
     fun kehadiranClicked(view: View) {
@@ -150,5 +163,25 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
             AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
         }
     }
+
+    override fun showLoading() {
+        rootLayout.visibility = View.GONE
+        loadingLayout.visibility = View.VISIBLE
+    }
+
+    override fun hideLoading() {
+        rootLayout.visibility = View.VISIBLE
+        loadingLayout.visibility = View.GONE
+    }
+
+    override fun getStatus(status: Kehadiran) {
+        val kehadiran = kehadiranParser(status.status)
+//        val snackbar = Snackbar.make(findViewById(R.id.drawer_layout), "Anak anda dinyatakan $kehadiran", Snackbar.LENGTH_INDEFINITE)
+        val snackbar = Snackbar.make(findViewById(R.id.drawer_layout), "Anak anda dinyatakan ${status.status}", Snackbar.LENGTH_INDEFINITE)
+        snackbar.view.setBackgroundColor(ContextCompat.getColor(this, android.R.color.holo_green_dark))
+        snackbar.show()
+//        Toast.makeText(this, "Anak anda dinyatakan $kehadiran", Toast.LENGTH_LONG).show()
+    }
+
 
 }
