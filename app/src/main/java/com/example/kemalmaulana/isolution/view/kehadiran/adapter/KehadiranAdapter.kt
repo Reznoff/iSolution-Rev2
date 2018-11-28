@@ -27,13 +27,11 @@ class KehadiranAdapter(val context: Context, val listKehadiran: List<DummyData.K
 
     inner class Holder(itemView: View): RecyclerView.ViewHolder(itemView) {
         val textName = itemView.findViewById<TextView>(R.id.textName)
-        val textClass = itemView.findViewById<TextView>(R.id.textClass)
         val textTime = itemView.findViewById<TextView>(R.id.textTime)
         val textStatus = itemView.findViewById<TextView>(R.id.textStatus)
 
         fun bindKehadiran(kehadiran: DummyData.Kehadiran, context: Context) {
             textName.text = kehadiran.nama
-            textClass.text = kehadiran.kelas
             textTime.text = kehadiran.waktu
             textStatus.text = kehadiran.status
         }

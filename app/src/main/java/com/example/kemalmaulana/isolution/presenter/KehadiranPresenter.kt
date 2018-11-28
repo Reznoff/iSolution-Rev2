@@ -7,7 +7,6 @@ import com.example.kemalmaulana.isolution.model.response.KehadiranResponse
 import com.example.kemalmaulana.isolution.utils.CoroutineContextProvider
 import com.example.kemalmaulana.isolution.view.kehadiran.`interface`.KehadiranView
 import com.google.gson.Gson
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
 import org.jetbrains.anko.coroutines.experimental.bg

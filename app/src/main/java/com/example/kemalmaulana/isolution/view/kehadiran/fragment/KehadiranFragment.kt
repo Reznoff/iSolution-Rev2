@@ -17,10 +17,13 @@ import com.example.kemalmaulana.isolution.view.kehadiran.adapter.KehadiranAdapte
 import com.example.kemalmaulana.isolution.model.DummyData
 import com.example.kemalmaulana.isolution.model.UserSession
 import com.example.kemalmaulana.isolution.R
+import com.example.kemalmaulana.isolution.model.content.Gambar
 import com.example.kemalmaulana.isolution.model.content.KehadiranSemester
+import com.example.kemalmaulana.isolution.model.content.Profile
 import com.example.kemalmaulana.isolution.model.repository.ApiRepository
 import com.example.kemalmaulana.isolution.presenter.KehadiranSemesterPresenter
 import com.example.kemalmaulana.isolution.view.kehadiran.`interface`.KehadiranSemesterView
+import com.example.kemalmaulana.isolution.view.profile.`interface`.ProfileView
 import com.github.mikephil.charting.components.Description
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
@@ -28,7 +31,7 @@ import com.github.mikephil.charting.data.PieEntry
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_kehadiran.*
 
-class KehadiranFragment : Fragment(), KehadiranSemesterView {
+class KehadiranFragment : Fragment(), KehadiranSemesterView, ProfileView {
 
     private lateinit var adapter: KehadiranAdapter
     private lateinit var toolbar: Toolbar
@@ -100,6 +103,9 @@ class KehadiranFragment : Fragment(), KehadiranSemesterView {
 
     }
 
+    override fun getData(profile: Profile, gambar: Gambar) {
+
+    }
 
     private fun recyclerViewAdapter(rootView: View) {
         val listLastRecord: RecyclerView = rootView.findViewById(R.id.listLastRecord)

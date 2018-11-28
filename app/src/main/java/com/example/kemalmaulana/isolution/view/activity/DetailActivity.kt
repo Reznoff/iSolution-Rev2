@@ -23,15 +23,15 @@ class DetailActivity : BaseActivity() {
             "kehadiran" -> {
                 manager.beginTransaction().replace(R.id.container, KehadiranFragment()).commit()
             }
-            "report" -> {
-                manager.beginTransaction().replace(R.id.container, ReportFragment()).commit()
-            }
             "jadwal" -> {
                 manager.beginTransaction().replace(R.id.container, JadwalFragment()).commit()
             }
-            "pembayaran" -> {
-                manager.beginTransaction().replace(R.id.container, PembayaranFragment()).commit()
-            }
+//            "report" -> {
+//                manager.beginTransaction().replace(R.id.container, ReportFragment()).commit()
+//            }
+//            "pembayaran" -> {
+//                manager.beginTransaction().replace(R.id.container, PembayaranFragment()).commit()
+//            }
         }
     }
 

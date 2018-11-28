@@ -4,6 +4,7 @@ import android.annotation.TargetApi
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
+import android.content.res.Resources
 import android.os.Build
 import android.os.Bundle
 import android.support.constraint.ConstraintLayout
@@ -13,21 +14,23 @@ import android.support.v4.content.ContextCompat
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatDelegate
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.ImageView
+import android.widget.ResourceCursorAdapter
 import android.widget.TextView
-import android.widget.Toast
 import com.example.kemalmaulana.isolution.model.UserSession
 import com.example.kemalmaulana.isolution.R
 import com.example.kemalmaulana.isolution.model.content.Kehadiran
 import com.example.kemalmaulana.isolution.model.repository.ApiRepository
 import com.example.kemalmaulana.isolution.presenter.KehadiranPresenter
-import com.example.kemalmaulana.isolution.utils.kehadiranParser
+import com.example.kemalmaulana.isolution.utils.statusKehadiranParser
 import com.example.kemalmaulana.isolution.view.kehadiran.`interface`.KehadiranView
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
+import kotlinx.android.synthetic.main.nav_header_main.*
 
 class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener, KehadiranView {
 
@@ -60,10 +63,9 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         val header: View = nav_view.getHeaderView(0)
         val navImage: ImageView = header.findViewById(R.id.imgSiswa)
         val navNis: TextView = header.findViewById(R.id.navNis)
-        val navNama:TextView = header.findViewById(R.id.navNama)
+//        val navDots: View = header.findViewById(R.id.statusDots)
 
         navNis.text = nis
-        navNama.visibility = View.GONE
         navImage.setOnClickListener {
             val intent = Intent(this, ProfileActivity::class.java)
             startActivity(intent)
@@ -175,12 +177,20 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     }
 
     override fun getStatus(status: Kehadiran) {
-        val kehadiran = kehadiranParser(status.status)
-//        val snackbar = Snackbar.make(findViewById(R.id.drawer_layout), "Anak anda dinyatakan $kehadiran", Snackbar.LENGTH_INDEFINITE)
-        val snackbar = Snackbar.make(findViewById(R.id.drawer_layout), "Anak anda dinyatakan ${status.status}", Snackbar.LENGTH_INDEFINITE)
-        snackbar.view.setBackgroundColor(ContextCompat.getColor(this, android.R.color.holo_green_dark))
-        snackbar.show()
-//        Toast.makeText(this, "Anak anda dinyatakan $kehadiran", Toast.LENGTH_LONG).show()
+        Log.d("getted ?", status.statusHadir)
+        if(status.statusHadir.equals("1", true)) {
+            val statusKehadiran = statusKehadiranParser(status.statusHadir)
+            statusDots.background = ContextCompat.getDrawable(this, android.R.color.holo_green_dark)
+            val snackbar = Snackbar.make(findViewById(R.id.drawer_layout), "Anak anda dinyatakan $statusKehadiran, sedang mengikuti pelajaran ${status.kehadiran?.get(0)?.namaPelajaran}.", Snackbar.LENGTH_INDEFINITE)
+            snackbar.view.setBackgroundColor(ContextCompat.getColor(this, android.R.color.holo_green_dark))
+            snackbar.show()
+        } else {
+            val statusKehadiran = statusKehadiranParser(status.statusHadir)
+            statusDots.background = ContextCompat.getDrawable(this, android.R.color.holo_red_dark)
+            val snackbar = Snackbar.make(findViewById(R.id.drawer_layout), "Anak anda dinyatakan $statusKehadiran", Snackbar.LENGTH_INDEFINITE)
+            snackbar.view.setBackgroundColor(ContextCompat.getColor(this, android.R.color.holo_red_dark))
+            snackbar.show()
+        }
     }
 
 

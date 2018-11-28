@@ -37,7 +37,7 @@ fun hariParser(hari: String?): String = when (hari) {
 }
 
 
-fun kehadiranParser(kehadiran: String?): String = when (kehadiran) {
+fun statusKehadiranParser(status: String?): String = when(status) {
     "0" -> "Tidak Hadir"
     "1" -> "Hadir"
     else -> "Tanpa Keterangan"
