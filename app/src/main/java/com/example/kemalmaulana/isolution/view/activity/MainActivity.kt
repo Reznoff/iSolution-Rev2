@@ -61,6 +61,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         toggle.syncState()
 
         nav_view.setNavigationItemSelectedListener(this)
+        nav_view.itemIconTintList = null
 
         //On Swipable menu
         cardSekolah.setOnClickListener { startActivity(Intent(this, PengumumanSekolahActivity::class.java)) }
@@ -71,6 +72,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         cardJadual.setOnClickListener { startActivity(Intent(this, DetailMapelActivity::class.java)) }
         cardGuru.setOnClickListener { startActivity(Intent(this, GuruActivity::class.java)) }
         cardProfile.setOnClickListener { startActivity(Intent(this, ProfileActivity::class.java)) }
+        cardTeman.setOnClickListener { startActivity(Intent(this, TemanActivity::class.java)) }
 
         val presenter = KehadiranPresenter(ApiRepository(), Gson(), this, this)
         presenter.getStatusKehadiran(nis)
@@ -111,7 +113,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                 startActivity(intent)
             }
             R.id.nav_teman -> {
-
+                startActivity(Intent(this, TemanActivity::class.java))
             }
             R.id.nav_about -> {
                 startActivity(Intent(this, AboutActivity::class.java))
@@ -208,7 +210,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                 .error(R.drawable.ic_logo_profile)
                 .transform(CircleTransform())
                 .into(imgDashBoardProfile)
-        txtNamaGuru.text = profile.namaLengkap
+        txtNamaLengkap.text = profile.namaLengkap
 
         //Navigation Header
         val header: View = nav_view.getHeaderView(0)

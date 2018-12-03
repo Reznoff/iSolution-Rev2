@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Pena</string>
+    <string name="app_name">Pena Cyber School</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -95,7 +95,8 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string
     <string name="tidak_ada_jadwal">Tidak Ada Jadual</string>
     <string name="menu">Menu</string>
     <string name="informasi">Informasi</string>
-    <string name="jadwal">Jadwal</string>
+    <string name="jadual">Jadual</string>
     <string name="teman">Teman</string>
     <string name="guru">Guru</string>
+    <string name="cari_guru">Cari Guru</string>
 </resources>

@@ -30,10 +30,10 @@ class UITesting {
     @Test
     fun instrumentationTest() {
         Thread.sleep(5000)
-        onView(withId(nis)).check(matches(isDisplayed()))
+        onView(withId(loginNis)).check(matches(isDisplayed()))
                 .perform(typeText("0996"))
         Thread.sleep(1000)
-        onView(withId(passwords)).check(matches(isDisplayed()))
+        onView(withId(loginPassword)).check(matches(isDisplayed()))
                 .perform(typeText("0996"))
         Thread.sleep(1000)
         onView(withId(sign_in_button)).check(matches(isDisplayed()))

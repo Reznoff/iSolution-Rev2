@@ -12,6 +12,7 @@ object UserSession {
         with(preference.edit()) {
             putString(context.getString(R.string.nis), nis)
             putString(context.getString(R.string.base_url), baseUrl)
+//            putString("kelas", kelas)
 //            commit()
             apply()
         }

@@ -11,7 +11,7 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/imgGuru"
+            android:id="@+id/imgTeman"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_marginStart="8dp"
@@ -23,39 +23,26 @@
             tools:srcCompat="@tools:sample/avatars" />
 
         <TextView
-            android:id="@+id/txtNipGuru"
+            android:id="@+id/txtNisTeman"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            app:layout_constraintBottom_toTopOf="@+id/txtNamaGuru"
-            app:layout_constraintStart_toEndOf="@+id/imgGuru"
+            app:layout_constraintBottom_toTopOf="@+id/txtNamaTeman"
+            app:layout_constraintStart_toEndOf="@+id/imgTeman"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="1986486" />
 
         <TextView
-            android:id="@+id/txtNamaGuru"
+            android:id="@+id/txtNamaTeman"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            app:layout_constraintBottom_toTopOf="@+id/txtStruktural"
-            app:layout_constraintStart_toEndOf="@+id/imgGuru"
-            app:layout_constraintTop_toBottomOf="@+id/txtNipGuru"
-            tools:text="Watashi wa Nihonjin-Desu" />
-
-        <TextView
-            android:id="@+id/txtStruktural"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imgGuru"
-            app:layout_constraintTop_toBottomOf="@+id/txtNamaGuru"
-            app:layout_constraintVertical_bias="1.0"
-            tools:text="Pegawai Negeri Sipil" />
+            app:layout_constraintStart_toEndOf="@+id/imgTeman"
+            app:layout_constraintTop_toBottomOf="@+id/txtNisTeman"
+            tools:text="Watashi wa Nihonjin-Desu" />
+
     </android.support.constraint.ConstraintLayout>
 </android.support.design.card.MaterialCardView>

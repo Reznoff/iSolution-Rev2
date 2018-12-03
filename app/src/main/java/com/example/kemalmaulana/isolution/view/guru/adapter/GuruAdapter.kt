@@ -37,7 +37,7 @@ class GuruAdapter(val context: Context, val guru: List<Guru>): RecyclerView.Adap
             txtNipGuru.text = guru.nipGuru
             txtNamaGuru.text = guru.namaGuru
             txtStatusGuru.text = guru.statusGuru
-            Picasso.get().load("https:${guru.photo}").error(android.R.drawable.stat_sys_warning).transform(CircleTransform()).into(imgGuru)
+            Picasso.get().load(guru.photo).error(R.drawable.ic_logo_profile).transform(CircleTransform()).into(imgGuru)
         }
     }
 }

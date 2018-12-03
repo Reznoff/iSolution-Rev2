@@ -1,13 +1,15 @@
 package com.example.kemalmaulana.isolution.view.activity
 
+import android.app.SearchManager
+import android.content.ComponentName
 import android.content.Context
 import android.content.SharedPreferences
+import android.graphics.Color
 import android.os.Bundle
 import android.support.constraint.ConstraintLayout
-import android.support.v7.widget.DecorToolbar
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
-import android.support.v7.widget.Toolbar
+import android.support.v7.widget.*
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import com.example.kemalmaulana.isolution.R
 import com.example.kemalmaulana.isolution.model.content.Guru
@@ -40,12 +42,23 @@ class GuruActivity : BaseActivity(), GuruView {
 
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_search_guru, menu)
+        val menuItem = menu?.findItem(R.id.search_guru)
+        val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
+        val searchView = menuItem?.actionView as SearchView
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(ComponentName(this, CariGuruResultActivity::class.java)))
+        searchView.queryHint = getString(R.string.cari_guru)
+        return true
+    }
+
+
     private fun initToolbar() {
         toolbar = findViewById(R.id.toolbar)
         toolbar.title = "Daftar Guru"
+        toolbar.setTitleTextColor(Color.WHITE)
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
     }
 
     override fun showLoading() {
@@ -55,7 +68,7 @@ class GuruActivity : BaseActivity(), GuruView {
 
     override fun hideLoading() {
         loadingLayout.visibility = View.GONE
-        listGuru.visibility = View.INVISIBLE
+        listGuru.visibility = View.VISIBLE
     }
 
     override fun getListGuru(guru: List<Guru>) {

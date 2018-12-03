@@ -60,11 +60,13 @@
                 android:id="@+id/imgBackground"
                 android:layout_width="0dp"
                 android:layout_height="225dp"
+                android:scaleType="fitXY"
+                android:alpha="0.6"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/side_nav_bar" />
+                app:srcCompat="@drawable/mountain" />
 
             <ImageView
                 android:id="@+id/imgDashBoardProfile"
@@ -79,7 +81,7 @@
                 tools:srcCompat="@tools:sample/avatars" />
 
             <TextView
-                android:id="@+id/txtNamaGuru"
+                android:id="@+id/txtNamaLengkap"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -104,7 +106,7 @@
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtNamaGuru" />
+                app:layout_constraintTop_toBottomOf="@+id/txtNamaLengkap" />
 
             <View
                 android:id="@+id/indicatorKKelas"
@@ -430,7 +432,7 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            app:srcCompat="@drawable/ic_logo_help_desk"
+                            app:srcCompat="@drawable/ic_logo_help_desk_coming_soon"
                             tools:srcCompat="@tools:sample/avatars" />
 
                         <TextView
@@ -526,7 +528,7 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            app:srcCompat="@drawable/ic_logo_ujian"
+                            app:srcCompat="@drawable/ic_logo_ujian_coming_soon"
                             tools:srcCompat="@tools:sample/avatars" />
 
                         <TextView
@@ -574,7 +576,7 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            app:srcCompat="@drawable/ic_logo_media_pembelajaran"
+                            app:srcCompat="@drawable/ic_logo_media_pembelajaran_coming_soon"
                             tools:srcCompat="@tools:sample/avatars" />
 
                         <TextView

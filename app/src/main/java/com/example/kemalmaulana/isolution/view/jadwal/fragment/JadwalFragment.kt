@@ -48,7 +48,7 @@ class   JadwalFragment : Fragment() {
     }
     private fun initToolbar(rootView: View) {
         toolbar = rootView.findViewById(R.id.toolbar)
-        toolbar.title = getString(R.string.jadwal)
+        toolbar.title = getString(R.string.jadual)
         toolbar.setTitleTextColor(Color.WHITE)
         toolbar.subtitle = getString(R.string.subtitle_jadwal)
         toolbar.setSubtitleTextColor(Color.WHITE)
