@@ -33,7 +33,7 @@ class ProfilePribadiFragment : Fragment(), ProfileView {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val rootView = inflater.inflate(R.layout.fragment_profile_pribadi, container, false)
-        presenter = ProfilePresenter(ApiRepository(), Gson(), this)
+        presenter = ProfilePresenter(ApiRepository(), Gson(), this, requireContext())
         presenter.getProfileData(nis)
 
 

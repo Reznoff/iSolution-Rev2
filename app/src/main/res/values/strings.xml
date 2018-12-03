@@ -1,9 +1,9 @@
 <resources>
-    <string name="app_name">iSolution</string>
+    <string name="app_name">Pena</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="jadwal">Jadwal</string>
+    <string name="base_url">baseUrl</string>
     <string name="kehadiran">Kehadiran</string>
     <string name="nilai">Nilai</string>
     <string name="pembayaran">Pembayaran</string>
@@ -91,4 +91,11 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string
     <string name="profile_image">Profile Image</string>
     <string name="loading">Loading…</string>
     <string name="status_kehadiran">Status Kehadiran :</string>
+    <string name="mata_pelajaran">Mata Pelajaran </string>
+    <string name="tidak_ada_jadwal">Tidak Ada Jadual</string>
+    <string name="menu">Menu</string>
+    <string name="informasi">Informasi</string>
+    <string name="jadwal">Jadwal</string>
+    <string name="teman">Teman</string>
+    <string name="guru">Guru</string>
 </resources>

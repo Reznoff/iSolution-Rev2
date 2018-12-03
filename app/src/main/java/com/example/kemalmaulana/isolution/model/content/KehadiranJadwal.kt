@@ -16,5 +16,8 @@ data class KehadiranJadwal(
         val jamAkhir: String? = null,
 
         @SerializedName("kehadiran")
-        val kehadiran: String? = null
+        val kehadiran: String? = null,
+
+        @SerializedName("pengajar")
+        val pengajar: String? = null
 )

@@ -1,8 +1,5 @@
 package com.example.kemalmaulana.isolution.model.content
 
-import android.os.Parcel
-import android.os.Parcelable
-import androidx.versionedparcelable.VersionedParcelize
 import com.google.gson.annotations.SerializedName
 
 data class Profile(

@@ -49,7 +49,7 @@ class KehadiranFragment : Fragment(), KehadiranSemesterView, ProfileView {
         contentLayout = rootView.findViewById(R.id.contentLayout)
         loadingLayout = rootView.findViewById(R.id.loadingLayout)
 
-        val presenter = KehadiranSemesterPresenter(ApiRepository(), Gson(), this)
+        val presenter = KehadiranSemesterPresenter(ApiRepository(), Gson(), this, requireContext())
         presenter.getKehadiranSemester(nis)
 
         initToolbar(rootView)

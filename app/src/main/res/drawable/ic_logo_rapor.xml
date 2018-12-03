@@ -26,7 +26,7 @@
     <path android:fillColor="#231f20"
         android:pathData="M51.5,136.89L148.5,136.89A1.5,1.5 0,0 1,150 138.39L150,138.39A1.5,1.5 0,0 1,148.5 139.89L51.5,139.89A1.5,1.5 0,0 1,50 138.39L50,138.39A1.5,1.5 0,0 1,51.5 136.89z"
         android:strokeColor="#231f20" android:strokeWidth="1"/>
-    <path android:fillColor="#231f20"
+    <path android:fillColor="#757576"
         android:pathData="M124.36,29.39a4.45,4.45 0,0 1,-4.43 4.44L80.07,33.83a4.46,4.46 0,0 1,-4.43 -4.44,4.44 4.44,0 0,1 4.43,-4.43L119.93,24.96A4.44,4.44 0,0 1,124.36 29.39Z"
         android:strokeColor="#231f20" android:strokeWidth="3"/>
 </vector>

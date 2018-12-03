@@ -38,7 +38,14 @@ fun hariParser(hari: String?): String = when (hari) {
 
 
 fun statusKehadiranParser(status: String?): String = when(status) {
-    "0" -> "Tidak Hadir"
-    "1" -> "Hadir"
+    "1" -> "Tidak Ada Keterangan"
+    "2" -> "Hadir"
+    "3" -> "Izin"
+    "4" -> "Sakit"
     else -> "Tanpa Keterangan"
 }
+
+@SuppressLint("SimpleDateFormat")
+fun parseToHourMinuteSecond(input: String?): Date = SimpleDateFormat("HH:mm:ss").parse(input)
+@SuppressLint("SimpleDateFormat")
+fun formatToHourMinuteSecond(input: Date?): String = SimpleDateFormat("HH:mm:ss").format(input)

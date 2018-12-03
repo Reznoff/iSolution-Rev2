@@ -3,20 +3,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_pengumuman"
-            android:icon="@drawable/ic_logo_pengumuman"
-            android:title="Pengumuman" />
-        <item
-            android:id="@+id/nav_setting"
-            android:icon="@drawable/ic_settings"
-            android:title="@string/setting" />
-        <item
-            android:id="@+id/nav_about"
-            android:icon="@drawable/ic_about"
-            android:title="@string/about" />
-    </group>
+    <item android:title="@string/menu">
+        <menu>
+            <item
+                android:id="@+id/nav_informasi"
+                android:icon="@drawable/ic_logo_informasi"
+                android:title="@string/informasi" />
+            <item
+                android:id="@+id/nav_jadwal"
+                android:icon="@drawable/ic_logo_jadwal"
+                android:title="@string/jadwal" />
+            <item
+                android:id="@+id/nav_teman"
+                android:icon="@drawable/ic_logo_teman"
+                android:title="@string/teman" />
+            <item
+                android:id="@+id/nav_guru"
+                android:icon="@drawable/ic_logo_guru"
+                android:title="@string/guru" />
+        </menu>
+    </item>
 
     <item android:title="@string/account">
         <menu>
@@ -24,6 +30,10 @@
                 android:id="@+id/nav_logout"
                 android:icon="@drawable/ic_logout"
                 android:title="@string/logout" />
+            <item
+                android:id="@+id/nav_about"
+                android:icon="@drawable/ic_about"
+                android:title="@string/about" />
         </menu>
     </item>
 

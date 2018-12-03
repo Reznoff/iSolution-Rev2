@@ -26,7 +26,7 @@ import com.google.gson.Gson
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_profile.*
 
-class ProfileActivity : AppCompatActivity(), ProfileView {
+class ProfileActivity : BaseActivity(), ProfileView {
 
     private lateinit var pagerAdapter: SectionPagerAdapter
     private lateinit var pager: ViewPager
@@ -43,7 +43,7 @@ class ProfileActivity : AppCompatActivity(), ProfileView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val presenter = ProfilePresenter(ApiRepository(), Gson(), this)
+        val presenter = ProfilePresenter(ApiRepository(), Gson(), this, this)
         presenter.getProfileData(nis)
 
         setContentView(R.layout.activity_profile)

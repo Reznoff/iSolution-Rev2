@@ -14,6 +14,9 @@ android {
         versionName "1.0"
         vectorDrawables.useSupportLibrary = true
         buildConfigField "String", "BASE_URL", "\"https://demo.simak.id/\""
+        buildConfigField "String", "SMK_WB1", "\"https://smkwb1.pge.co.id/\""
+        buildConfigField "String", "SMK_WB2", "\"https://smkwb2.pge.co.id/\""
+        buildConfigField "String", "SMP_WB", "\"https://smpwb.pge.co.id/\""
         testInstrumentationRunner "android.support.default.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -42,6 +45,7 @@ dependencies {
     implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
     implementation 'com.google.code.gson:gson:2.8.5'
     implementation 'com.squareup.picasso:picasso:2.71828'
+    implementation 'com.android.volley:volley:1.1.1'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.0.1'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.0.1'
     implementation "org.jetbrains.anko:anko-coroutines:$anko_version"

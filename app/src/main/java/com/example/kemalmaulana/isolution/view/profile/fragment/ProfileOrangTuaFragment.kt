@@ -30,7 +30,7 @@ class ProfileOrangTuaFragment : Fragment(), ProfileView {
                               savedInstanceState: Bundle?): View? {
         val rootView = inflater.inflate(R.layout.fragment_profile_orang_tua, container, false)
 
-        presenter = ProfilePresenter(ApiRepository(), Gson(), this)
+        presenter = ProfilePresenter(ApiRepository(), Gson(), this, requireContext())
         presenter.getProfileData(nis)
         return rootView
     }
