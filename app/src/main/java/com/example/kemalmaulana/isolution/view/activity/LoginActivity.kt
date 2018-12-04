@@ -3,30 +3,31 @@ package com.example.kemalmaulana.isolution.view.activity
 import android.content.Intent
 import android.os.Bundle
 import android.support.constraint.ConstraintLayout
-import android.support.design.widget.Snackbar
-import android.util.Log
+import android.support.design.widget.Snackbar.*
 import android.view.View
 import android.widget.*
 import com.android.volley.AuthFailureError
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.Response
-import com.android.volley.toolbox.JsonObjectRequest
+import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.kemalmaulana.isolution.BuildConfig
 
 import com.example.kemalmaulana.isolution.model.UserSession
 import com.example.kemalmaulana.isolution.R
+import com.example.kemalmaulana.isolution.model.content.Login
 import com.example.kemalmaulana.isolution.model.repository.ApiLink
+import com.google.gson.Gson
 
 import kotlinx.android.synthetic.main.activity_login.*
-import org.json.JSONObject
-
+import org.json.JSONException
+import java.io.*
+import java.lang.StringBuilder
+import java.net.URLEncoder
 
 class LoginActivity : BaseActivity() {
 
-    private val authUser: String = "999001"
-    private val authPass: String = "999001"
     private lateinit var sekolahSpinner: Spinner
     private lateinit var sekolahAdapter: SpinnerAdapter
     private lateinit var queue: RequestQueue
@@ -63,59 +64,92 @@ class LoginActivity : BaseActivity() {
         }
 
         val url: String = defaultBaseUrl + ApiLink.goLogin()
-        val request: JsonObjectRequest = object : JsonObjectRequest(Request.Method.POST, url, null,
-                Response.Listener<JSONObject> { response ->
-                    Log.d("response", response.toString())
-                    if (response.getString("loginStatus") == "0") {
-                        Snackbar.make(container, "Kesalahan : ${response.getString("msg")}", Snackbar.LENGTH_LONG).show()
-                    } else if (response.getString("loginStatus") == "1") {
-                        UserSession.createSignInSession(this, response.getString("NIS"), defaultBaseUrl)
-                        val i = Intent(this, MainActivity::class.java)
-                        i.putExtra(getString(R.string.nis), response.getString("NIS"))
-                        startActivity(i)
+        //String Request
+        val stringRequest: StringRequest = object : StringRequest(Request.Method.POST, url,
+                Response.Listener<String> { response ->
+//                    Log.d("response", response.toString())
+//                    Log.d("username", loginNis.text.toString())
+//                    Log.d("password", loginPassword.text.toString())
+                    try {
+                        val parsedResponse = Gson().fromJson(response, Login::class.java)
+//                        Log.d("loginStatus", parsedResponse.statusLogin)
+                        if (loginNis.text.toString().isEmpty() && loginPassword.text.toString().isEmpty()) {
+                            make(container, "Username / Password Tidak Boleh Kosong", LENGTH_LONG).show()
+                        } else if (parsedResponse.statusLogin == "0") {
+                            make(container, "Username / Password Salah", LENGTH_LONG).show()
+                        } else if (parsedResponse.statusLogin == "1") {
+                            UserSession.createSignInSession(this, parsedResponse.nis, parsedResponse.kelas, defaultBaseUrl)
+                            val i = Intent(this, MainActivity::class.java)
+                            i.putExtra(getString(R.string.nis), parsedResponse.nis)
+                            startActivity(i)
+                        }
+                    } catch (e: JSONException) {
+                        make(container, "Kesalahan : ${e.printStackTrace()}", LENGTH_LONG).show()
                     }
                 },
                 Response.ErrorListener { error ->
-                    Snackbar.make(container, "Terjadi Kesalahan : $error", Snackbar.LENGTH_LONG).show()
+                    make(container, "Terjadi Kesalahan : ${error.printStackTrace()}", LENGTH_LONG).show()
                 }) {
-            override fun getParams(): MutableMap<String, String> {
-                val params: MutableMap<String, String> = mutableMapOf()
-                params["username"] = loginNis.text.toString()
-                params["password"] = loginPassword.text.toString()
-                return params
-            }
 
-            override fun getBody(): ByteArray {
-                val params: HashMap<String, String> = hashMapOf()
-                params["username"] = loginNis.text.toString()
-                params["password"] = loginPassword.text.toString()
-                return JSONObject(params).toString().toByteArray()
+//            @Throws(AuthFailureError::class)
+//            override fun getParams(): MutableMap<String, String> {
+//                val params: MutableMap<String, String> = hashMapOf()
+//                params["username"] = loginNis.text.toString()
+//                params["password"] = loginPassword.text.toString()
+//                return params
+//            }
+
+            @Throws(AuthFailureError::class)
+            override fun getBody(): ByteArray? {
+                val params: MutableMap<String, String> = hashMapOf()
+                try {
+                    params["username"] = loginNis.text.toString()
+                    params["password"] = loginPassword.text.toString()
+                } catch (e: JSONException) {
+                    e.printStackTrace()
+                }
+                return if (params.isNotEmpty()) {
+                    encodeParameters(params, paramsEncoding)
+                } else {
+                    null
+                }
             }
 
             @Throws(AuthFailureError::class)
             override fun getHeaders(): MutableMap<String, String> {
                 val params: MutableMap<String, String> = mutableMapOf()
-                params["username"] = loginNis.text.toString()
-                params["password"] = loginPassword.text.toString()
+//                params["username"] = loginNis.text.toString()
+//                params["password"] = loginPassword.text.toString()
+                params["Content-Type"] = "application/x-www-form-urlencoded"
                 return params
+            }
+
+            @Throws(AuthFailureError::class)
+            override fun getBodyContentType(): String {
+                return "application/x-www-form-urlencoded; charset=UTF-8"
             }
         }
 
+
         sign_in_button.setOnClickListener {
-            queue.add(request)
-//            val username: String = nis.text.trim().toString()
-//            val password: String = passwords.text.trim().toString()
-//            if (username == authUser && password == authPass) {
-//                UserSession.createSignInSession(this, username, defaultBaseUrl)
-//                val i = Intent(this, MainActivity::class.java)
-//                i.putExtra(getString(R.string.nis), username)
-//                startActivity(i)
-//            } else {
-//                Toast.makeText(this, "Can't Sign-in", Toast.LENGTH_SHORT).show()
-//            }
+            queue.add(stringRequest)
         }
+    }
 
-
+    //to encode parameter
+    private fun encodeParameters(params: Map<String, String>, paramsEncoding: String): ByteArray {
+        val encodedParams = StringBuilder()
+        try {
+            for (entry: Map.Entry<String, String> in params.entries) {
+                encodedParams.append(URLEncoder.encode(entry.key, paramsEncoding));
+                encodedParams.append('=');
+                encodedParams.append(URLEncoder.encode(entry.value, paramsEncoding));
+                encodedParams.append('&');
+            }
+            return encodedParams.toString().toByteArray()
+        } catch (uee: UnsupportedEncodingException) {
+            throw RuntimeException("Encoding not supported: $paramsEncoding", uee);
+        }
     }
 
 }
