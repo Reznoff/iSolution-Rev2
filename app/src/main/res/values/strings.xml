@@ -99,4 +99,6 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string
     <string name="teman">Teman</string>
     <string name="guru">Guru</string>
     <string name="cari_guru">Cari Guru</string>
+    <string name="idKelas">idKelas</string>
+    <string name="kelas">kelas</string>
 </resources>

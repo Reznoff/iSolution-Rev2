@@ -15,7 +15,7 @@ object ApiLink {
 
     fun getListGuru(): String = "/staff/api_get_pengajar"
 
-    fun getListTeman(nis: String?): String = "/pelajar/api_teman_siswa/$nis/1"
+    fun getListTeman(nis: String?, kelas: String?): String = "/pelajar/api_teman_siswa/$nis/$kelas"
 
-    fun goLogin(): String = "/login/api_login/"
+    fun goLogin(): String = "login/api_login/"
 }

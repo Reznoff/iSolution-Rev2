@@ -30,6 +30,11 @@ class TemanActivity : BaseActivity(), TemanView {
         session.getString("NIS", null)
     }
 
+    val kelas: String by lazy {
+        val session = getSharedPreferences(UserSession.PREF_NAME, Context.MODE_PRIVATE)
+        session.getString("idKelas", "1")
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_teman)
@@ -40,7 +45,8 @@ class TemanActivity : BaseActivity(), TemanView {
         initToolbar()
 
         presenter = TemanPresenter(ApiRepository(), Gson(), this, this)
-        presenter.getListTeman(nis)
+        presenter.getListTeman(nis, kelas)
+
 
     }
 

@@ -19,11 +19,13 @@ class TemanPresenter(private val apiRepository: ApiRepository, private val gson:
         session.getString("baseUrl", null)
     }
 
-    fun getListTeman(nis: String) {
+
+
+    fun getListTeman(nis: String, kelas: String) {
         view.showLoading()
         GlobalScope.async(contextPool.main) {
             val listTeman = bg {
-                gson.fromJson(apiRepository.doRequest(baseUrl+ ApiLink.getListTeman(nis)), TemanResponse::class.java)
+                gson.fromJson(apiRepository.doRequest(baseUrl+ ApiLink.getListTeman(nis, kelas)), TemanResponse::class.java)
             }
             listTeman.await().teman?.let { view.getListTeman(it) }
             view.hideLoading()
