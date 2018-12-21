@@ -1,17 +1,20 @@
 package com.example.kemalmaulana.isolution.view.activity
 
 import android.annotation.TargetApi
-import android.app.AlertDialog
+import android.app.*
 import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.support.constraint.ConstraintLayout
 import android.support.design.widget.NavigationView
+import android.support.v4.app.NotificationCompat
+import android.support.v4.app.TaskStackBuilder
 import android.support.v4.content.ContextCompat
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatDelegate
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.ImageView
@@ -28,6 +31,7 @@ import com.example.kemalmaulana.isolution.utils.CircleTransform
 import com.example.kemalmaulana.isolution.utils.formatToHourMinuteSecond
 import com.example.kemalmaulana.isolution.utils.parseToHourMinuteSecond
 import com.example.kemalmaulana.isolution.view.kehadiran.`interface`.KehadiranView
+import com.google.firebase.iid.FirebaseInstanceId
 import com.google.gson.Gson
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_main.*
@@ -76,6 +80,16 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
         val presenter = KehadiranPresenter(ApiRepository(), Gson(), this, this)
         presenter.getStatusKehadiran(nis)
+        kehadiranNotification()
+        FirebaseInstanceId.getInstance().instanceId.addOnCompleteListener {
+            if(!it.isSuccessful) {
+                Log.w("FCM", "Get Instance Failed", it.exception)
+            }
+
+            val token = it.result?.token
+            Log.d("FCM","Current Token $token")
+
+        }
     }
 
 
@@ -136,11 +150,11 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         }
         builder.setTitle(R.string.keterangan)
                 .setMessage(R.string.logout_alert)
-                .setPositiveButton("Ya") { dialog, which ->
+                .setPositiveButton("Ya") { _, _ ->
                     UserSession.logoutSession(this)
                     startActivity(Intent(this, LoginActivity::class.java))
                 }
-                .setNegativeButton("Tidak") { dialog, which -> }
+                .setNegativeButton("Tidak") { _, _ -> }
                 .show()
     }
 
@@ -148,10 +162,6 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
         }
-    }
-
-    private fun homeMenu() {
-
     }
 
     override fun showLoading() {
@@ -227,6 +237,37 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         navImage.setOnClickListener {
             val intent = Intent(this, ProfileActivity::class.java)
             startActivity(intent)
+        }
+    }
+
+    public fun kehadiranNotification() {
+        val notifyId = 1
+        val channelId = "kehadiran_notification"
+        val name = "Status Kehadiran"
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val channel  = NotificationChannel(channelId, name, NotificationManager.IMPORTANCE_DEFAULT)
+            val notification: Notification? = NotificationCompat.Builder(this, channelId)
+                    .setContentTitle("Kehadiran Siswa")
+                    .setContentText("Pesan yang akan diterima")
+                    .setSmallIcon(R.drawable.icon_pena)
+                    .setShowWhen(true)
+                    .setChannelId(channelId)
+                    .build()
+
+            val mNotificationManager: NotificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            mNotificationManager.createNotificationChannel(channel)
+//            mNotificationManager.notify(notifyId, notification)
+
+            val stackBuilder = TaskStackBuilder.create(this)
+            stackBuilder.addNextIntent(Intent(this, MainActivity::class.java))
+            val resultPendingIntent: PendingIntent? = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT)
+            notification?.contentIntent = resultPendingIntent
+            mNotificationManager.notify(notifyId, notification)
+        } else {
+            val notification: NotificationCompat.Builder = NotificationCompat.Builder(this)
+                    .setContentTitle("Kehadiran Siswa")
+
+            TODO("VERSION.SDK_INT < O")
         }
 
     }

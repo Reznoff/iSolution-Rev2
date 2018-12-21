@@ -39,7 +39,7 @@ class ReportKeterampilanAdapter(val context: Context, val nilai: List<DummyData.
         tvKkm.text = nilaiValues.kkm.toString()
         tvNilai.text = nilaiValues.nilai.toString()
         tvPredikat.text = nilaiValues.predikat.toString()
-        cardKeterampilan.setOnClickListener { view ->
+        cardKeterampilan.setOnClickListener { _->
             dialog(context)
         }
 

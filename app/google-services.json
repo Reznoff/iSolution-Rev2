@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "396277209553",
+    "firebase_url": "https://pena-2a3ce.firebaseio.com",
+    "project_id": "pena-2a3ce",
+    "storage_bucket": "pena-2a3ce.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:396277209553:android:ea5b6396502a45b6",
+        "android_client_info": {
+          "package_name": "com.example.kemalmaulana.isolution"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "396277209553-kdmj3598bb8d0rr5f4eee0lf8pd762ck.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.kemalmaulana.isolution",
+            "certificate_hash": "a4e121b2c5e1ff4fa87598d702d02acf0a1e11dc"
+          }
+        },
+        {
+          "client_id": "396277209553-l199qqc50v77k28kgtlolfe41o0c6gkh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfmBQwGQEHGEfMODldmuqVJ-IX7WR_3zc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "396277209553-l199qqc50v77k28kgtlolfe41o0c6gkh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
