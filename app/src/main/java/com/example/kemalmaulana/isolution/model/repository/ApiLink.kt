@@ -18,4 +18,6 @@ object ApiLink {
     fun getListTeman(nis: String?, kelas: String?): String = "/pelajar/api_teman_siswa/$nis/$kelas"
 
     fun goLogin(): String = "login/api_login/"
+
+    fun fcmAfterLogin(): String = "fcm/api_regis_fcm/"
 }

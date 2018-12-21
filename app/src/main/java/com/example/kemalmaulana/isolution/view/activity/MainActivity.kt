@@ -80,16 +80,6 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
         val presenter = KehadiranPresenter(ApiRepository(), Gson(), this, this)
         presenter.getStatusKehadiran(nis)
-        kehadiranNotification()
-        FirebaseInstanceId.getInstance().instanceId.addOnCompleteListener {
-            if(!it.isSuccessful) {
-                Log.w("FCM", "Get Instance Failed", it.exception)
-            }
-
-            val token = it.result?.token
-            Log.d("FCM","Current Token $token")
-
-        }
     }
 
 
@@ -240,35 +230,5 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         }
     }
 
-    public fun kehadiranNotification() {
-        val notifyId = 1
-        val channelId = "kehadiran_notification"
-        val name = "Status Kehadiran"
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val channel  = NotificationChannel(channelId, name, NotificationManager.IMPORTANCE_DEFAULT)
-            val notification: Notification? = NotificationCompat.Builder(this, channelId)
-                    .setContentTitle("Kehadiran Siswa")
-                    .setContentText("Pesan yang akan diterima")
-                    .setSmallIcon(R.drawable.icon_pena)
-                    .setShowWhen(true)
-                    .setChannelId(channelId)
-                    .build()
 
-            val mNotificationManager: NotificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-            mNotificationManager.createNotificationChannel(channel)
-//            mNotificationManager.notify(notifyId, notification)
-
-            val stackBuilder = TaskStackBuilder.create(this)
-            stackBuilder.addNextIntent(Intent(this, MainActivity::class.java))
-            val resultPendingIntent: PendingIntent? = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT)
-            notification?.contentIntent = resultPendingIntent
-            mNotificationManager.notify(notifyId, notification)
-        } else {
-            val notification: NotificationCompat.Builder = NotificationCompat.Builder(this)
-                    .setContentTitle("Kehadiran Siswa")
-
-            TODO("VERSION.SDK_INT < O")
-        }
-
-    }
 }

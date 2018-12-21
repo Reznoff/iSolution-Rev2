@@ -6,6 +6,7 @@ import com.example.kemalmaulana.isolution.R
 
 object UserSession {
     lateinit var preference: SharedPreferences
+
     val PREF_NAME: String = "Session"
     fun createSignInSession(context: Context, nis: String?, idKelas: String?, kelas: String?, baseUrl: String?) {
         preference = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE) ?: return
@@ -15,6 +16,14 @@ object UserSession {
             putString(context.getString(R.string.idKelas), idKelas)
             putString(context.getString(R.string.kelas), kelas)
 //            commit()
+            apply()
+        }
+    }
+
+    fun setFcmToken(context: Context, token: String?) {
+        preference = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE) ?: return
+        with(preference.edit()) {
+            putString("fcmToken", token)
             apply()
         }
     }

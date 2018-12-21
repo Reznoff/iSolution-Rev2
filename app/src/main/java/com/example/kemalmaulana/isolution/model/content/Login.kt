@@ -19,5 +19,8 @@ data class Login(
         val kelas: String? = null,
 
         @SerializedName("msg")
-        val msg: String? = null
+        val msg: String? = null,
+
+        @SerializedName("status")
+        val status: String? = null
 )
