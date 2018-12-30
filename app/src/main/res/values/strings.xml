@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Pena Cyber School</string>
+    <string name="app_name">Wira Buana - Cyber School</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -101,4 +101,5 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string
     <string name="cari_guru">Cari Guru</string>
     <string name="idKelas">idKelas</string>
     <string name="kelas">kelas</string>
+    <string name="hak_akses">hakAkses</string>
 </resources>

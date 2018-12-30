@@ -8,13 +8,12 @@ object UserSession {
     lateinit var preference: SharedPreferences
 
     val PREF_NAME: String = "Session"
-    fun createSignInSession(context: Context, nis: String?, idKelas: String?, kelas: String?, baseUrl: String?) {
+    fun createSignInSession(context: Context, nomorInduk: String?, hakAkses: String?, baseUrl: String?) {
         preference = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE) ?: return
         with(preference.edit()) {
-            putString(context.getString(R.string.nis), nis)
+            putString(context.getString(R.string.nis), nomorInduk)
             putString(context.getString(R.string.base_url), baseUrl)
-            putString(context.getString(R.string.idKelas), idKelas)
-            putString(context.getString(R.string.kelas), kelas)
+            putString(context.getString(R.string.hak_akses), hakAkses)
 //            commit()
             apply()
         }

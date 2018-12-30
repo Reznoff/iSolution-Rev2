@@ -15,7 +15,7 @@ android {
         minSdkVersion 19
         targetSdkVersion 28
         versionCode 1
-        versionName "1.0"
+        versionName "0.1"
         vectorDrawables.useSupportLibrary = true
         multiDexEnabled true
         buildConfigField "String", "BASE_URL", "\"https://demo.simak.id/\""
@@ -24,7 +24,7 @@ android {
         buildConfigField "String", "SMP_WB", "\"https://smpwb.pge.co.id/\""
         testInstrumentationRunner "android.support.default.runner.AndroidJUnitRunner"
         manifestPlaceholders = [
-                onesignal_app_id: '79d8c5b6-b996-4ff3-b35c-d70e72fc335e',
+                onesignal_app_id               : '79d8c5b6-b996-4ff3-b35c-d70e72fc335e',
                 onesignal_google_project_number: 'REMOTE'
         ]
     }

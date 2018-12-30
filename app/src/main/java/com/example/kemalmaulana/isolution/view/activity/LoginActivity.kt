@@ -1,10 +1,14 @@
 package com.example.kemalmaulana.isolution.view.activity
 
+import android.annotation.TargetApi
+import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.support.constraint.ConstraintLayout
 import android.support.design.widget.Snackbar.*
+import android.util.Log
 import android.view.View
 import android.widget.*
 import com.android.volley.AuthFailureError
@@ -22,10 +26,12 @@ import com.google.firebase.iid.FirebaseInstanceId
 import com.google.gson.Gson
 
 import kotlinx.android.synthetic.main.activity_login.*
+import org.jetbrains.anko.progressDialog
 import org.json.JSONException
 import java.io.*
 import java.lang.StringBuilder
 import java.net.URLEncoder
+import java.util.logging.Logger
 
 
 class LoginActivity : BaseActivity() {
@@ -34,6 +40,7 @@ class LoginActivity : BaseActivity() {
     private lateinit var sekolahAdapter: SpinnerAdapter
     private lateinit var queue: RequestQueue
     private lateinit var container: ConstraintLayout
+    private lateinit var builder: AlertDialog.Builder
     private val token by lazy {
         val session = getSharedPreferences(UserSession.PREF_NAME, Context.MODE_PRIVATE)
         session.getString("fcmToken", null)
@@ -104,6 +111,18 @@ class LoginActivity : BaseActivity() {
 //        }
     }
 
+    @TargetApi(Build.VERSION_CODES.M)
+    private fun dialog(context: Context) {
+        builder = if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            AlertDialog.Builder(context, android.R.style.Theme_Material_Light_Dialog_Alert)
+        } else {
+            AlertDialog.Builder(context)
+        }
+        builder.setTitle(R.string.keterangan)
+                .setMessage(getString(R.string.loading))
+                .show()
+    }
+
     private fun doLogin(defaultBaseUrl: String): StringRequest {
         val url = "$defaultBaseUrl${ApiLink.goLogin()}"
         //String Request
@@ -125,15 +144,18 @@ class LoginActivity : BaseActivity() {
 
                             //doFCMLogin
 //                            Log.d("fcmsuccess", token)
-                            UserSession.createSignInSession(this, parsedResponse.nis, parsedResponse.id_kelas, parsedResponse.kelas, defaultBaseUrl)
+                            dialog(this)
+                            UserSession.createSignInSession(this, parsedResponse.nis, parsedResponse.level, defaultBaseUrl)
                             val i = Intent(this, MainActivity::class.java)
                             i.putExtra(getString(R.string.nis), parsedResponse.nis)
+                            finish()
                             startActivity(i)
                         }
-                    } catch (e: JSONException) {
-                        make(container, "Kesalahan : ${e.localizedMessage}", LENGTH_LONG).show()
+//                    } catch (e: JSONException) {
+//                        make(container, "Kesalahan : ${e.localizedMessage}", LENGTH_LONG).show()
                     } catch (ex: Exception) {
-                        make(container, "Kesalahan : ${ex.localizedMessage}", LENGTH_LONG).show()
+                        make(container, "Username / Password tidak dikenali atau salah", LENGTH_LONG).show()
+                        Log.e("exLogin", ex.localizedMessage)
                     }
                 },
                 Response.ErrorListener { error ->

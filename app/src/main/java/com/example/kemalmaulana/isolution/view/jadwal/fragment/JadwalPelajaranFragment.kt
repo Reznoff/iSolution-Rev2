@@ -16,6 +16,7 @@ import com.example.kemalmaulana.isolution.view.jadwal.adapter.JadwalPelajaranAda
 
 import com.example.kemalmaulana.isolution.R
 import com.example.kemalmaulana.isolution.model.UserSession
+import com.example.kemalmaulana.isolution.model.content.Jadwal
 import com.example.kemalmaulana.isolution.model.content.KehadiranJadwal
 import com.example.kemalmaulana.isolution.model.repository.ApiRepository
 import com.example.kemalmaulana.isolution.presenter.JadwalPresenter
@@ -29,7 +30,6 @@ class JadwalPelajaranFragment : Fragment(), JadwalView {
     lateinit var presenter: JadwalPresenter
     lateinit var listPelajaran: RecyclerView
     lateinit var loadingLayout: ConstraintLayout
-    lateinit var cardHeader: CardView
 
     private val currentNis by lazy {
         val prefs: SharedPreferences = requireContext().getSharedPreferences(UserSession.PREF_NAME, Context.MODE_PRIVATE)
@@ -41,11 +41,9 @@ class JadwalPelajaranFragment : Fragment(), JadwalView {
         val rootView: View = inflater.inflate(R.layout.fragment_jadwal_pelajaran, container, false)
         listPelajaran = rootView.findViewById(R.id.listPelajaran)
         loadingLayout = rootView.findViewById(R.id.loadingLayout)
-        cardHeader = rootView.findViewById(R.id.cardHeader)
 
         presenter = JadwalPresenter(ApiRepository(), Gson(), this, requireContext())
         presenter.getJadwalData(currentNis)
-
 
         return rootView
     }
@@ -53,16 +51,14 @@ class JadwalPelajaranFragment : Fragment(), JadwalView {
     override fun showLoading() {
         loadingLayout.visibility = View.VISIBLE
         listPelajaran.visibility = View.GONE
-        cardHeader.visibility = View.GONE
     }
 
     override fun hideLoading() {
         loadingLayout.visibility = View.GONE
         listPelajaran.visibility = View.VISIBLE
-        cardHeader.visibility = View.VISIBLE
     }
 
-    override fun showJadwal(jadwal: List<KehadiranJadwal>) {
+    override fun showJadwal(jadwal: List<Jadwal>) {
         adapter = JadwalPelajaranAdapter(requireContext(), jadwal)
         listPelajaran.adapter = adapter
         adapter.notifyDataSetChanged()

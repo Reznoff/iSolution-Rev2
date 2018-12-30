@@ -35,7 +35,5 @@ class DetailActivity : BaseActivity() {
         }
     }
 
-    override fun onBackPressed() {
-        this.finish()
-    }
+
 }

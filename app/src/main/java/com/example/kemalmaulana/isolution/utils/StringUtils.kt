@@ -36,8 +36,15 @@ fun hariParser(hari: String?): String = when (hari) {
     else -> ""
 }
 
+fun hakAksesParser(level: String?): String? = when (level) {
+    "26" -> "Orang Tua"
+    "4" -> "Siswa"
+    "2" -> "Guru"
+    else -> null
+}
 
-fun statusKehadiranParser(status: String?): String = when(status) {
+
+fun statusKehadiranParser(status: String?): String = when (status) {
     "1" -> "Tidak Ada Keterangan"
     "2" -> "Hadir"
     "3" -> "Izin"
@@ -47,5 +54,6 @@ fun statusKehadiranParser(status: String?): String = when(status) {
 
 @SuppressLint("SimpleDateFormat")
 fun parseToHourMinuteSecond(input: String?): Date = SimpleDateFormat("HH:mm:ss").parse(input)
+
 @SuppressLint("SimpleDateFormat")
 fun formatToHourMinuteSecond(input: Date?): String = SimpleDateFormat("HH:mm:ss").format(input)

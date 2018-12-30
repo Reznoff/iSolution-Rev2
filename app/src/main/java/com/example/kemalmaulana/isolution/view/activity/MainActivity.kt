@@ -29,6 +29,7 @@ import com.example.kemalmaulana.isolution.model.repository.ApiRepository
 import com.example.kemalmaulana.isolution.presenter.KehadiranPresenter
 import com.example.kemalmaulana.isolution.utils.CircleTransform
 import com.example.kemalmaulana.isolution.utils.formatToHourMinuteSecond
+import com.example.kemalmaulana.isolution.utils.hakAksesParser
 import com.example.kemalmaulana.isolution.utils.parseToHourMinuteSecond
 import com.example.kemalmaulana.isolution.view.kehadiran.`interface`.KehadiranView
 import com.google.firebase.iid.FirebaseInstanceId
@@ -44,9 +45,14 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     private lateinit var builder: AlertDialog.Builder
     private lateinit var rootLayout: ConstraintLayout
     private lateinit var loadingLayout: ConstraintLayout
+    private var loginSebagai: String? = null
     val nis: String by lazy {
         val session = getSharedPreferences(UserSession.PREF_NAME, Context.MODE_PRIVATE)
         session.getString("NIS", null)
+    }
+    val hakAkses: String by lazy {
+        val session = getSharedPreferences(UserSession.PREF_NAME, Context.MODE_PRIVATE)
+        session.getString("hakAkses", null)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -67,16 +73,82 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         nav_view.setNavigationItemSelectedListener(this)
         nav_view.itemIconTintList = null
 
-        //On Swipable menu
-        cardSekolah.setOnClickListener { startActivity(Intent(this, PengumumanSekolahActivity::class.java)) }
-        //On Top Home Menu
-        cardStatus.setOnClickListener { startActivity(Intent(this, DetailMapelActivity::class.java)) }
-        //On Small Icon Menu
-        cardInformasi.setOnClickListener { startActivity(Intent(this, PengumumanSekolahActivity::class.java)) }
-        cardJadual.setOnClickListener { startActivity(Intent(this, DetailMapelActivity::class.java)) }
-        cardGuru.setOnClickListener { startActivity(Intent(this, GuruActivity::class.java)) }
-        cardProfile.setOnClickListener { startActivity(Intent(this, ProfileActivity::class.java)) }
-        cardTeman.setOnClickListener { startActivity(Intent(this, TemanActivity::class.java)) }
+        when(hakAkses) {
+            "4" -> {
+                loginSebagai = hakAksesParser(hakAkses)
+                cardPerizinan.visibility = View.GONE
+                cardPindahRole.visibility = View.GONE
+                cardTunggakanPembayaran.visibility = View.GONE
+                content_ortu_siswa.visibility = View.VISIBLE
+                content_guru.visibility = View.GONE
+
+//                supportFragmentManager.beginTransaction().replace(R.id)
+
+                //On Swipable menu
+                cardSekolah.setOnClickListener { startActivity(Intent(this, PengumumanSekolahActivity::class.java)) }
+                //On Top Home Menu
+                cardStatus.setOnClickListener { startActivity(Intent(this, DetailMapelActivity::class.java)) }
+                //On Small Icon Menu
+                cardInformasi.setOnClickListener { startActivity(Intent(this, PengumumanSekolahActivity::class.java)) }
+                cardJadual.setOnClickListener {
+                    val intent = Intent(this, DetailActivity::class.java)
+                    intent.putExtra("section", "jadwal")
+                    startActivity(intent)
+                }
+                cardGuru.setOnClickListener { startActivity(Intent(this, GuruActivity::class.java)) }
+                cardProfile.setOnClickListener { startActivity(Intent(this, ProfileActivity::class.java)) }
+                cardTeman.setOnClickListener { startActivity(Intent(this, TemanActivity::class.java)) }
+            }
+            "26" -> {
+                loginSebagai = hakAksesParser(hakAkses)
+                cardPerizinan.visibility = View.VISIBLE
+                cardPindahRole.visibility = View.VISIBLE
+                cardTunggakanPembayaran.visibility = View.VISIBLE
+                content_ortu_siswa.visibility = View.VISIBLE
+                content_guru.visibility = View.GONE
+
+                //On Swipable menu
+                cardSekolah.setOnClickListener { startActivity(Intent(this, PengumumanSekolahActivity::class.java)) }
+                //On Top Home Menu
+                cardStatus.setOnClickListener { startActivity(Intent(this, DetailMapelActivity::class.java)) }
+                //On Small Icon Menu
+                cardInformasi.setOnClickListener { startActivity(Intent(this, PengumumanSekolahActivity::class.java)) }
+                cardJadual.setOnClickListener {
+                    val intent = Intent(this, DetailActivity::class.java)
+                    intent.putExtra("section", "jadwal")
+                    startActivity(intent)
+                }
+                cardGuru.setOnClickListener { startActivity(Intent(this, GuruActivity::class.java)) }
+                cardProfile.setOnClickListener { startActivity(Intent(this, ProfileActivity::class.java)) }
+                cardTeman.setOnClickListener { startActivity(Intent(this, TemanActivity::class.java)) }
+            }
+            "2" -> {
+                loginSebagai = hakAksesParser(hakAkses)
+                cardPerizinan.visibility = View.VISIBLE
+                cardPindahRole.visibility = View.VISIBLE
+                cardTunggakanPembayaran.visibility = View.VISIBLE
+                content_ortu_siswa.visibility = View.GONE
+                content_guru.visibility = View.VISIBLE
+
+                //TODO - link to card guru
+
+            }
+        }
+
+//        //On Swipable menu
+//        cardSekolah.setOnClickListener { startActivity(Intent(this, PengumumanSekolahActivity::class.java)) }
+//        //On Top Home Menu
+//        cardStatus.setOnClickListener { startActivity(Intent(this, DetailMapelActivity::class.java)) }
+//        //On Small Icon Menu
+//        cardInformasi.setOnClickListener { startActivity(Intent(this, PengumumanSekolahActivity::class.java)) }
+//        cardJadual.setOnClickListener {
+//            val intent = Intent(this, DetailActivity::class.java)
+//            intent.putExtra("section", "jadwal")
+//            startActivity(intent)
+//        }
+//        cardGuru.setOnClickListener { startActivity(Intent(this, GuruActivity::class.java)) }
+//        cardProfile.setOnClickListener { startActivity(Intent(this, ProfileActivity::class.java)) }
+//        cardTeman.setOnClickListener { startActivity(Intent(this, TemanActivity::class.java)) }
 
         val presenter = KehadiranPresenter(ApiRepository(), Gson(), this, this)
         presenter.getStatusKehadiran(nis)

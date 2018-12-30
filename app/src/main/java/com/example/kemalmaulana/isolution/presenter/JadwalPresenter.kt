@@ -24,9 +24,9 @@ class JadwalPresenter(private val apiRepository: ApiRepository, private val gson
         view.showLoading()
         GlobalScope.async(contextPool.main) {
             val dataJadwal = bg {
-                gson.fromJson(apiRepository.doRequest(baseUrl+ApiLink.getKehadiranSiswa(nis)), Kehadiran::class.java)
+                gson.fromJson(apiRepository.doRequest(baseUrl+ApiLink.getJadwalSiswa(nis)), JadwalResponse::class.java)
             }
-            dataJadwal.await().kehadiran?.let { view.showJadwal(it) }
+            view.showJadwal(dataJadwal.await().jadwal)
             view.hideLoading()
         }
     }
